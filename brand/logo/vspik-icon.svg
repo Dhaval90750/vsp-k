@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="VSp!k">
+<title>VSp!k</title><defs><filter id="sh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="2" dy="3" stdDeviation="0.01" flood-color="#15171C" flood-opacity=".16"/><feDropShadow dx="0" dy="9" stdDeviation="7" flood-color="#15171C" flood-opacity=".16"/></filter></defs>
+<rect width="512" height="512" rx="112" fill="#15171C"/>
+<g filter="url(#sh)" transform="rotate(6 256 256) translate(156 106)"><path fill="#E5482B" d="M0.0 -5.4 L100.0 -2.8 L197.0 0.0 L197.1 100.0 L202.3 200.0 L200.0 298.7 L100.0 299.8 L5.4 300.0 L4.0 200.0 L-4.1 100.0 Z"/>
+<g fill="#FBFAF6" transform="translate(-39.1 22) scale(2.6)"><g transform="translate(9 0) skewX(-10)"><path d="M34 4 H66 L54 68 H46 Z"/><rect x="40" y="76" width="20" height="20"/></g></g></g></svg>

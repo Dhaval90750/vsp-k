@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VSp!k Posts Batch 02</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#15171C; --ink-2:#2B2E36; --paper:#F3F0E8; --paper-2:#EAE4D7; --card:#FBFAF6; --kraft:#D9C7A7; --muted:#5E5D59; --accent:#E5482B; --volt:#C8F031; --display:"Bricolage Grotesque",sans-serif; --mono:"JetBrains Mono",monospace; --body:"Instrument Sans",sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #cfc9bc; font-family: var(--body); color: var(--ink); padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; }
+  .post { width: 1080px; height: 1350px; position: relative; overflow: hidden; background: var(--paper); padding: 84px 84px 0; display: flex; flex-direction: column; flex: none; }
+  .post::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 50; opacity: .14; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .08  0 0 0 0 .08  0 0 0 0 .1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .dark { background: var(--ink); color: var(--paper); }
+  .kraftbg { background: var(--paper-2); }
+
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .tag { font: 500 24px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .dark .tag { color: #A9A7A0; }
+  .icon { width: 60px; height: 60px; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 3px solid currentColor; padding: 28px 0 44px; font: 500 24px var(--mono); }
+  .foot img { height: 54px; }
+
+  h1, h2, .big { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: 1; }
+  .big { font-size: 120px; }
+  .mid { font: 800 84px/1.02 var(--display); letter-spacing: -.03em; }
+  .small { font: 500 38px/1.35 var(--body); color: var(--ink-2); }
+  .dark .small { color: #C9C6BE; }
+  em { font-style: normal; background: var(--accent); color: var(--card); padding: 0 12px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .volt em { background: var(--volt); color: var(--ink); }
+  .stack { margin-top: auto; display: flex; flex-direction: column; gap: 36px; }
+
+  /* paper bits */
+  .chip { display: inline-grid; place-items: center; font: 800 1em/1 var(--display); padding: .08em .2em .12em; clip-path: polygon(0% 3%, 9% 0%, 31% 2%, 56% 0%, 79% 3%, 100% 0%, 98% 31%, 100% 63%, 97% 100%, 71% 97%, 46% 100%, 21% 98%, 2% 100%, 0% 69%, 2% 38%); }
+  .c-ink { background: var(--ink); color: var(--paper); } .c-paper { background: var(--card); color: var(--ink); } .c-kraft { background: var(--kraft); } .c-acc { background: var(--accent); color: var(--card); }
+  .shadow { filter: drop-shadow(4px 6px 0 rgba(21,23,28,.2)); }
+  .tape { position: absolute; width: 170px; height: 46px; background: rgba(217,199,167,.85); box-shadow: 0 2px 3px rgba(0,0,0,.1); }
+  .card { background: var(--card); border: 4px solid var(--ink); box-shadow: 12px 12px 0 var(--ink); padding: 48px; position: relative; }
+  .law { font: 500 28px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: #B8341C; }
+  .dark .law { color: var(--accent); }
+  .swipe { font: 500 26px var(--mono); display: inline-flex; gap: 14px; align-items: center; }
+  .swipe::after { content: "→"; font-family: var(--body); font-weight: 700; font-size: 34px; }
+
+  /* specific */
+  .apple { width: 150px; height: 150px; border-radius: 50%; background: var(--accent); position: absolute; box-shadow: inset -14px -14px 0 rgba(0,0,0,.15); }
+  .apple::before { content: ""; position: absolute; width: 14px; height: 40px; background: var(--ink); left: 68px; top: -30px; transform: rotate(10deg); }
+  .apple::after { content: ""; position: absolute; width: 50px; height: 26px; background: #6E8B3D; left: 80px; top: -26px; border-radius: 0 60% 0 60%; transform: rotate(-12deg); }
+  .browser { border: 4px solid var(--ink); background: var(--card); position: relative; }
+  .browser .bar { height: 46px; border-bottom: 4px solid var(--ink); display: flex; align-items: center; gap: 10px; padding: 0 16px; }
+  .browser .bar i { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--ink); }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .cal span { aspect-ratio: 1; border: 3px solid var(--ink); background: var(--card); display: grid; place-items: start; padding: 10px; font: 700 28px var(--display); position: relative; }
+  .cal span.kal::after { content: "kal"; position: absolute; inset: 46% 6% auto; background: var(--accent); color: var(--card); font: 800 26px/1.4 var(--display); text-align: center; transform: rotate(-6deg); }
+  .cal span.gone { opacity: .35; text-decoration: line-through; }
+  .cal span.ok { background: var(--ink); color: var(--paper); }
+  .cal span.ok::after { content: "LIVE"; position: absolute; inset: 48% 4% auto; background: var(--volt); color: var(--ink); font: 800 24px/1.5 var(--display); text-align: center; transform: rotate(4deg); }
+</style>
+<style>
+  .organelle { position: absolute; font: 700 26px/1.2 var(--body); background: var(--card); border: 3px solid var(--ink); padding: 10px 14px; box-shadow: 5px 5px 0 var(--ink); }
+  .organelle b { display: block; font: 500 18px var(--mono); color: #B8341C; text-transform: uppercase; letter-spacing: .06em; }
+  .file { font: 500 30px var(--mono); background: var(--card); border: 3px solid var(--ink); padding: 14px 20px; box-shadow: 5px 5px 0 var(--ink); display: inline-block; justify-self: start; }
+  .math { font: 500 64px/1.2 "Cambria Math", "Times New Roman", serif; }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><g id="spike"><g transform="translate(9 0) skewX(-10)"><path d="M34 4 H66 L54 68 H46 Z"/><rect x="40" y="76" width="20" height="20"/></g></g></defs></svg>
+
+<!-- BIOLOGY -->
+<section class="post" id="s1-biology">
+  <div class="top"><span class="tag">Biology class · Business edition</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="position:relative; height:600px; margin-top:20px">
+    <div class="shadow" style="position:absolute; left:200px; top:40px; width:520px; height:440px; border-radius:48% 52% 45% 55% / 55% 45% 55% 45%; background:#F6D9CF; border:5px solid var(--ink)"></div>
+    <div style="position:absolute; left:380px; top:170px; width:150px; height:150px; border-radius:50%; background:var(--accent); border:5px solid var(--ink)"></div>
+    <div style="position:absolute; left:250px; top:330px; width:130px; height:60px; border-radius:40px; background:var(--kraft); border:4px solid var(--ink); transform:rotate(-14deg)"></div>
+    <div style="position:absolute; left:560px; top:120px; width:110px; height:50px; border-radius:40px; background:var(--kraft); border:4px solid var(--ink); transform:rotate(20deg)"></div>
+    <div class="organelle" style="left:0; top:0; transform:rotate(-3deg)"><b>Nucleus</b>Your brand</div>
+    <div class="organelle" style="right:0; top:10px; transform:rotate(3deg)"><b>Mitochondria</b>Fast hosting</div>
+    <div class="organelle" style="left:-10px; bottom:30px; transform:rotate(2deg)"><b>Membrane</b>Security</div>
+    <div class="organelle" style="right:-10px; bottom:0; transform:rotate(-2deg)"><b>Ribosomes</b>The WhatsApp button<br>that makes enquiries</div>
+  </div>
+  <div class="stack">
+    <p class="mid" style="font-size:78px">Mitochondria is the <em>powerhouse</em> of the cell.</p>
+    <p class="small">Your website should be the powerhouse of your business. Every part with a job, nothing just for decoration.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<!-- CHEMISTRY -->
+<section class="post kraftbg" id="s2-chemistry">
+  <div class="top"><span class="tag">Chemistry class · Business edition</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="card" style="margin-top:50px; padding:30px 34px; transform:rotate(-1deg)">
+    <svg viewBox="0 0 860 470" width="100%" style="display:block; overflow:visible">
+      <line x1="40" y1="420" x2="840" y2="420" stroke="#15171C" stroke-width="4"/>
+      <line x1="40" y1="420" x2="40" y2="20" stroke="#15171C" stroke-width="4"/>
+      <text x="440" y="462" text-anchor="middle" font-family="JetBrains Mono" font-size="20" fill="#5E5D59">PROJECT PROGRESS →</text>
+      <text x="22" y="230" text-anchor="middle" font-family="JetBrains Mono" font-size="20" fill="#5E5D59" transform="rotate(-90 22 230)">EFFORT →</text>
+      <path d="M60 320 C 230 320, 300 40, 440 40 S 650 380, 820 380" fill="none" stroke="#15171C" stroke-width="7" stroke-dasharray="16 12"/>
+      <path d="M60 320 C 230 320, 320 220, 440 220 S 650 380, 820 380" fill="none" stroke="#E5482B" stroke-width="10"/>
+      <rect x="452" y="18" width="340" height="44" fill="#FBFAF6" stroke="#15171C" stroke-width="3"/>
+      <text x="466" y="48" font-family="Instrument Sans" font-weight="700" font-size="22" fill="#15171C">Alone: “next month pakka”</text>
+      <rect x="470" y="200" width="250" height="46" fill="#E5482B" stroke="#15171C" stroke-width="3" transform="rotate(-3 595 223)"/>
+      <text x="486" y="232" font-family="Instrument Sans" font-weight="700" font-size="24" fill="#FBFAF6" transform="rotate(-3 595 223)">With a catalyst</text>
+      <text x="60" y="290" font-family="Bricolage Grotesque" font-weight="800" font-size="30" fill="#15171C">Idea</text>
+      <text x="800" y="462" text-anchor="middle" font-family="Bricolage Grotesque" font-weight="800" font-size="30" fill="#E5482B">Live!</text>
+    </svg>
+  </div>
+  <div class="stack">
+    <p class="mid" style="font-size:78px"><em>Activation energy:</em> the effort it takes to finally start.</p>
+    <p class="small">We're the catalyst. Same reaction, a lot less energy. You stay on your business; we handle the hump.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<!-- MATHS -->
+<section class="post dark" id="s3-maths">
+  <div class="top"><span class="tag">Maths class · Business edition</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="margin-top:140px; position:relative">
+    <div class="card" style="background:var(--card); color:var(--ink); transform:rotate(-2deg); padding:60px 50px; box-shadow:12px 12px 0 var(--accent)">
+      <span class="tape" style="top:-24px; left:42%; transform:rotate(-4deg)"></span>
+      <div style="display:flex; align-items:center; gap:18px; flex-wrap:nowrap">
+        <div style="text-align:center"><span class="math" style="font-size:80px">lim</span><div style="font:500 28px var(--mono)">days → ∞</div></div>
+        <span style="font:800 60px var(--display); white-space:nowrap">“kal pakka”</span>
+        <span class="math">=</span>
+        <span style="font:800 60px var(--display); background:var(--accent); color:var(--card); padding:0 12px; white-space:nowrap">still kal</span>
+      </div>
+    </div>
+  </div>
+  <div class="stack">
+    <p class="mid">Some limits never <em>converge.</em></p>
+    <p class="small">Our dates do. You get one in writing before we start, and the project lands on it.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo-on-dark.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<!-- ECONOMICS / MBA -->
+<section class="post" id="s4-economics">
+  <div class="top"><span class="tag">MBA class · Economics 101</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px; margin-top:70px">
+    <div class="card" style="transform:rotate(-2deg); padding:36px">
+      <p class="law">Cost of a website</p>
+      <p style="font:800 64px/1 var(--display); margin-top:20px">Once.</p>
+      <p class="small" style="font-size:28px; margin-top:16px">Paid one time. Quoted upfront.</p>
+    </div>
+    <div class="card" style="transform:rotate(2deg); padding:36px; background:var(--ink); color:var(--paper); box-shadow:12px 12px 0 var(--accent)">
+      <p class="law" style="color:var(--accent)">Cost of no website</p>
+      <p style="font:800 64px/1 var(--display); margin-top:20px">Every day.</p>
+      <p class="small" style="font-size:28px; margin-top:16px; color:#C9C6BE">Customers who searched for you and found the shop next door instead.</p>
+    </div>
+  </div>
+  <div class="stack">
+    <p class="mid"><em>Opportunity cost:</em> the price of not doing it.</p>
+    <p class="small">It never shows up on a bill. That's why it's the expensive one.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<!-- STATISTICS / DATA ANALYTICS -->
+<section class="post kraftbg" id="s5-statistics">
+  <div class="top"><span class="tag">Statistics class · Data analytics</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="display:grid; grid-template-columns:1.1fr .9fr; gap:30px; margin-top:60px; align-items:center">
+    <div style="display:grid; gap:18px">
+      <span class="file" style="transform:rotate(-2deg)">sales_final.xlsx</span>
+      <span class="file" style="transform:rotate(1.5deg)">sales_final_v2.xlsx</span>
+      <span class="file" style="transform:rotate(-1deg)">sales_FINAL_final(1).xlsx</span>
+      <span class="file" style="transform:rotate(2deg); background:var(--accent); color:var(--card)">use_this_one.xlsx</span>
+    </div>
+    <div class="card" style="padding:28px; transform:rotate(2deg)">
+      <p class="law" style="font-size:20px">One dashboard</p>
+      <div style="display:flex; align-items:flex-end; gap:16px; height:240px; margin-top:20px; border-bottom:4px solid var(--ink); border-left:4px solid var(--ink); padding:0 12px">
+        <span style="flex:1; height:40%; background:var(--kraft); border:3px solid var(--ink)"></span>
+        <span style="flex:1; height:62%; background:var(--ink-2)"></span>
+        <span style="flex:1; height:55%; background:var(--kraft); border:3px solid var(--ink)"></span>
+        <span style="flex:1; height:92%; background:var(--accent); border:3px solid var(--ink)"></span>
+      </div>
+      <p style="font:500 18px var(--mono); margin-top:12px; color:var(--muted)">Illustration only</p>
+    </div>
+  </div>
+  <div class="stack">
+    <p class="mid" style="font-size:78px">Your data has <em>four versions</em> of the truth.</p>
+    <p class="small">We clean it, connect it and turn it into one dashboard your whole team trusts. Data analytics, reports and AI insights.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VSp!k Posts Batch 01</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#15171C; --ink-2:#2B2E36; --paper:#F3F0E8; --paper-2:#EAE4D7; --card:#FBFAF6; --kraft:#D9C7A7; --muted:#5E5D59; --accent:#E5482B; --volt:#C8F031; --display:"Bricolage Grotesque",sans-serif; --mono:"JetBrains Mono",monospace; --body:"Instrument Sans",sans-serif; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #cfc9bc; font-family: var(--body); color: var(--ink); padding: 40px; display: flex; flex-wrap: wrap; gap: 40px; }
+  .post { width: 1080px; height: 1350px; position: relative; overflow: hidden; background: var(--paper); padding: 84px 84px 0; display: flex; flex-direction: column; flex: none; }
+  .post::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 50; opacity: .14; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .08  0 0 0 0 .08  0 0 0 0 .1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .dark { background: var(--ink); color: var(--paper); }
+  .kraftbg { background: var(--paper-2); }
+
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .tag { font: 500 24px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .dark .tag { color: #A9A7A0; }
+  .icon { width: 60px; height: 60px; }
+  .foot { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 3px solid currentColor; padding: 28px 0 44px; font: 500 24px var(--mono); }
+  .foot img { height: 54px; }
+
+  h1, h2, .big { font-family: var(--display); font-weight: 800; letter-spacing: -.035em; line-height: 1; }
+  .big { font-size: 120px; }
+  .mid { font: 800 84px/1.02 var(--display); letter-spacing: -.03em; }
+  .small { font: 500 38px/1.35 var(--body); color: var(--ink-2); }
+  .dark .small { color: #C9C6BE; }
+  em { font-style: normal; background: var(--accent); color: var(--card); padding: 0 12px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .volt em { background: var(--volt); color: var(--ink); }
+  .stack { margin-top: auto; display: flex; flex-direction: column; gap: 36px; }
+
+  /* paper bits */
+  .chip { display: inline-grid; place-items: center; font: 800 1em/1 var(--display); padding: .08em .2em .12em; clip-path: polygon(0% 3%, 9% 0%, 31% 2%, 56% 0%, 79% 3%, 100% 0%, 98% 31%, 100% 63%, 97% 100%, 71% 97%, 46% 100%, 21% 98%, 2% 100%, 0% 69%, 2% 38%); }
+  .c-ink { background: var(--ink); color: var(--paper); } .c-paper { background: var(--card); color: var(--ink); } .c-kraft { background: var(--kraft); } .c-acc { background: var(--accent); color: var(--card); }
+  .shadow { filter: drop-shadow(4px 6px 0 rgba(21,23,28,.2)); }
+  .tape { position: absolute; width: 170px; height: 46px; background: rgba(217,199,167,.85); box-shadow: 0 2px 3px rgba(0,0,0,.1); }
+  .card { background: var(--card); border: 4px solid var(--ink); box-shadow: 12px 12px 0 var(--ink); padding: 48px; position: relative; }
+  .law { font: 500 28px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: #B8341C; }
+  .dark .law { color: var(--accent); }
+  .swipe { font: 500 26px var(--mono); display: inline-flex; gap: 14px; align-items: center; }
+  .swipe::after { content: "→"; font-family: var(--body); font-weight: 700; font-size: 34px; }
+
+  /* specific */
+  .apple { width: 150px; height: 150px; border-radius: 50%; background: var(--accent); position: absolute; box-shadow: inset -14px -14px 0 rgba(0,0,0,.15); }
+  .apple::before { content: ""; position: absolute; width: 14px; height: 40px; background: var(--ink); left: 68px; top: -30px; transform: rotate(10deg); }
+  .apple::after { content: ""; position: absolute; width: 50px; height: 26px; background: #6E8B3D; left: 80px; top: -26px; border-radius: 0 60% 0 60%; transform: rotate(-12deg); }
+  .browser { border: 4px solid var(--ink); background: var(--card); position: relative; }
+  .browser .bar { height: 46px; border-bottom: 4px solid var(--ink); display: flex; align-items: center; gap: 10px; padding: 0 16px; }
+  .browser .bar i { width: 14px; height: 14px; border-radius: 50%; border: 3px solid var(--ink); }
+  .cal { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+  .cal span { aspect-ratio: 1; border: 3px solid var(--ink); background: var(--card); display: grid; place-items: start; padding: 10px; font: 700 28px var(--display); position: relative; }
+  .cal span.kal::after { content: "kal"; position: absolute; inset: 46% 6% auto; background: var(--accent); color: var(--card); font: 800 26px/1.4 var(--display); text-align: center; transform: rotate(-6deg); }
+  .cal span.gone { opacity: .35; text-decoration: line-through; }
+  .cal span.ok { background: var(--ink); color: var(--paper); }
+  .cal span.ok::after { content: "LIVE"; position: absolute; inset: 48% 4% auto; background: var(--volt); color: var(--ink); font: 800 24px/1.5 var(--display); text-align: center; transform: rotate(4deg); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><g id="spike"><g transform="translate(9 0) skewX(-10)"><path d="M34 4 H66 L54 68 H46 Z"/><rect x="40" y="76" width="20" height="20"/></g></g></defs></svg>
+
+<!-- ============ POST 1: NEWTON CAROUSEL ============ -->
+<section class="post" id="p1-1">
+  <div class="top"><span class="tag">Client physics · 1/4</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="apple shadow" style="right:110px; top:190px; transform:rotate(-12deg)"></div>
+  <div class="stack">
+    <p class="tag" style="color:#B8341C">Isaac Newton, if he ran an agency</p>
+    <h1 class="big" style="font-size:140px">Newton's laws of <em>client projects.</em></h1>
+    <p class="small">Three laws every business owner has lived through. Swipe if you've felt all three.</p>
+    <span class="swipe">Swipe</span>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<section class="post kraftbg" id="p1-2">
+  <div class="top"><span class="tag">Client physics · 2/4</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="stack">
+    <div class="card" style="transform:rotate(-1.5deg)"><span class="tape" style="top:-24px; left:40%; transform:rotate(-4deg)"></span>
+      <p class="law">1st law · Inertia</p>
+      <p class="mid" style="margin-top:28px">A project at rest stays at rest until someone says <em>“urgent”.</em></p>
+    </div>
+    <p class="small"><b style="color:var(--ink)">How we break it:</b> a one-page brief and a fixed date on day one. Momentum from the start, not from day 30.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span class="swipe">Next law</span></div>
+</section>
+
+<section class="post kraftbg" id="p1-3">
+  <div class="top"><span class="tag">Client physics · 3/4</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="stack">
+    <div class="card" style="transform:rotate(1.2deg)"><span class="tape" style="top:-24px; left:30%; transform:rotate(3deg)"></span>
+      <p class="law">2nd law · Force</p>
+      <p class="mid" style="margin-top:28px">F = m × <em>“bas ek chhota sa change”</em></p>
+      <p class="small" style="margin-top:28px; font-size:30px">where m = the whole project</p>
+    </div>
+    <p class="small"><b style="color:var(--ink)">How we break it:</b> changes are welcome. Each one gets a price and a date before we start. Nothing grows in secret.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span class="swipe">Last law</span></div>
+</section>
+
+<section class="post dark" id="p1-4">
+  <div class="top"><span class="tag">Client physics · 4/4</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="stack">
+    <p class="law">3rd law · Action &amp; reaction</p>
+    <p class="mid">Every <em>“can we just…”</em> has an equal and opposite delay.</p>
+    <p class="small"><b style="color:var(--paper)">How we break it:</b> fixed scope keeps your launch date fixed. Extras go into version 2, with their own date.</p>
+    <div class="chip c-acc shadow" style="font-size:40px; align-self:flex-start; padding:18px 30px; margin-top:12px; font-family:var(--body); font-weight:700; letter-spacing:0">Fixed price. Fixed date. WhatsApp us.</div>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo-on-dark.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<!-- ============ POST 2: BAS EK CHHOTA SA CHANGE ============ -->
+<section class="post" id="p2-1">
+  <div class="top"><span class="tag">Real client stories, sort of · 1/5</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="stack">
+    <p class="tag">Day 1</p>
+    <h1 class="big" style="font-size:150px">“Bas ek chhota sa change.”</h1>
+    <p class="small">How small is small? Let's measure.</p>
+    <span class="swipe">Swipe</span>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<section class="post" id="p2-2">
+  <div class="top"><span class="tag">Day 2 · 2/5</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="browser shadow" style="margin-top:60px; height:560px">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <div style="display:grid; place-items:center; height:calc(100% - 46px)"><div style="display:flex; gap:8px; font-size:150px; transform:rotate(-2deg)"><span class="chip c-ink">L</span><span class="chip c-paper" style="border:3px solid var(--ink)">O</span><span class="chip c-kraft">G</span><span class="chip c-acc">O</span></div></div>
+  </div>
+  <div class="stack"><p class="mid">“Logo thoda <em>bada</em> karo.”</p></div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span class="swipe">Then</span></div>
+</section>
+
+<section class="post kraftbg" id="p2-3">
+  <div class="top"><span class="tag">Day 4 · 3/5</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="position:relative; height:620px; margin-top:40px">
+    <div class="browser shadow" style="position:absolute; left:0; top:60px; width:520px; height:440px; transform:rotate(-6deg)"><div class="bar"><i></i><i></i><i></i></div></div>
+    <div class="browser shadow" style="position:absolute; left:180px; top:30px; width:520px; height:440px; transform:rotate(2deg)"><div class="bar"><i></i><i></i><i></i></div></div>
+    <div class="browser shadow" style="position:absolute; left:380px; top:120px; width:520px; height:440px; transform:rotate(7deg)"><div class="bar"><i></i><i></i><i></i></div><div style="display:grid; place-items:center; height:390px; font:800 120px var(--display); color:var(--accent)">+1</div></div>
+  </div>
+  <div class="stack"><p class="mid">“Ek page aur add karo. <em>Bas ek.</em>”</p></div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span class="swipe">And then</span></div>
+</section>
+
+<section class="post" id="p2-4">
+  <div class="top"><span class="tag">Day 9 · 4/5</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="position:relative; height:640px; margin-top:20px">
+    <div class="shadow" style="position:absolute; left:300px; top:10px; width:340px; height:620px; background:var(--ink); border-radius:52px; transform:rotate(-5deg); padding:26px">
+      <div style="background:var(--card); height:100%; border-radius:30px; display:grid; place-items:center; text-align:center; font:800 54px/1.05 var(--display); padding:20px">App<br>bhi?<br><span style="color:var(--accent); font-size:120px">?!</span></div>
+    </div>
+  </div>
+  <div class="stack"><p class="mid">“Saath mein ek <em>app</em> bhi bana do na. Play Store pe.”</p></div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span class="swipe">So we</span></div>
+</section>
+
+<section class="post dark" id="p2-5">
+  <div class="top"><span class="tag">The fix · 5/5</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="stack">
+    <h2 class="big">We quote every change <em>upfront.</em></h2>
+    <p class="small">Price and date first. You say yes. Then we build. Your launch date never quietly moves.</p>
+    <p class="small" style="color:var(--paper)">Changes welcome. Surprises not.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo-on-dark.svg" alt=""><span>WhatsApp +91 90750 18192</span></div>
+</section>
+
+<!-- ============ POST 3: MERE BHATIJE NE BANAYA HAI ============ -->
+<section class="post" id="p3">
+  <div class="top"><span class="tag">Every family has one</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:60px">
+    <div>
+      <div class="browser" style="height:470px; transform:rotate(-4deg); background:#F7F2E2">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div style="padding:22px; position:relative; height:420px">
+          <p style="font:700 40px 'Comic Sans MS', cursive; color:#1A4FD6; text-align:center">WELCOME TO<br>OUR SITE!!!</p>
+          <div style="margin:20px auto; width:70%; height:90px; background: repeating-linear-gradient(45deg,#ccc 0 10px,#e6e6e6 10px 20px); display:grid; place-items:center; font:500 20px var(--mono)">image.jpg</div>
+          <p style="font:500 20px var(--mono); text-align:center; color:#888">under construction 🚧<br>since 2019</p>
+          <span class="tape" style="top:150px; left:-30px; transform:rotate(-30deg)"></span>
+          <span class="tape" style="bottom:20px; right:-30px; transform:rotate(25deg)"></span>
+        </div>
+      </div>
+      <p class="tag" style="text-align:center; margin-top:40px">Bhatija edition</p>
+    </div>
+    <div>
+      <div class="browser shadow" style="height:470px; transform:rotate(3deg)">
+        <div class="bar"><i></i><i></i><i></i></div>
+        <div style="padding:30px">
+          <p style="font:800 48px/1 var(--display)">Your Dental Clinic</p>
+          <p style="font:500 24px/1.3 var(--body); margin-top:14px; color:var(--ink-2)">Open today 10 am to 8 pm</p>
+          <div style="margin-top:28px; display:grid; gap:14px">
+            <span style="background:var(--accent); color:var(--card); font:700 26px var(--body); padding:16px; border:3px solid var(--ink)">Book on WhatsApp</span>
+            <span style="background:var(--card); font:700 26px var(--body); padding:16px; border:3px solid var(--ink)">Call now</span>
+          </div>
+        </div>
+      </div>
+      <p class="tag" style="text-align:center; margin-top:40px">Built properly</p>
+    </div>
+  </div>
+  <div class="stack">
+    <p class="mid" style="font-size:76px">“Website toh <em>mere bhatije</em> ne banaya hai.”</p>
+    <p class="small">Love your nephew. Hire us for the website.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<!-- ============ POST 4: KAL PAKKA ============ -->
+<section class="post kraftbg" id="p4">
+  <div class="top"><span class="tag">A calendar, explained</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div class="card" style="margin-top:56px; padding:36px; transform:rotate(-1deg)">
+    <p style="font:800 44px var(--display); margin-bottom:22px">Other agency</p>
+    <div class="cal">
+      <span class="gone">1</span><span class="gone">2</span><span class="gone">3</span><span class="gone">4</span><span class="gone">5</span><span class="gone">6</span><span class="kal">7</span>
+    </div>
+    <p style="font:800 44px var(--display); margin:34px 0 22px">VSp!k</p>
+    <div class="cal">
+      <span>1</span><span>2</span><span>3</span><span>4</span><span class="ok">5</span><span>6</span><span>7</span>
+    </div>
+  </div>
+  <div class="stack">
+    <p class="mid">“Kal <em>pakka</em> ho jayega.”</p>
+    <p class="small">We give you a date. Then we hit the date. Revolutionary, we know.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo.svg" alt=""><span>+91 90750 18192</span></div>
+</section>
+
+<!-- ============ POST 5: PARTNERS ============ -->
+<section class="post dark volt" id="p5">
+  <div class="top"><span class="tag">Partner programme</span><svg class="icon" viewBox="28 0 50 100" fill="#E5482B"><use href="#spike"/></svg></div>
+  <div style="position:relative; height:520px; margin-top:30px">
+    <div class="shadow" style="position:absolute; left:60px; top:70px; width:330px; height:330px; border-radius:50%; background:var(--volt); border:6px solid var(--card); display:grid; place-items:center; font:800 130px var(--display); color:var(--ink); transform:rotate(-8deg); box-shadow: inset 0 -16px 0 rgba(0,0,0,.15)">10%</div>
+    <div class="shadow" style="position:absolute; left:440px; top:150px; width:300px; height:300px; border-radius:50%; background:var(--accent); border:6px solid var(--card); display:grid; place-items:center; font:800 116px var(--display); color:var(--card); transform:rotate(9deg); box-shadow: inset 0 -16px 0 rgba(0,0,0,.18)">15%</div>
+    <div class="chip c-paper" style="position:absolute; right:30px; top:30px; font-size:44px; padding:14px 22px; transform:rotate(6deg); font-family:var(--body); font-weight:700; letter-spacing:0">+5% renewals</div>
+  </div>
+  <div class="stack">
+    <h2 class="big" style="font-size:108px">Refer a client. <em>Get paid.</em></h2>
+    <p class="small">You share a contact. We quote, build and deliver. You get 10% of the first project, or 15% once you're a partner. Paid within 7 days of the client paying us.</p>
+  </div>
+  <div class="foot"><img src="../brand/logo/vspik-logo-on-dark.svg" alt=""><span>WhatsApp "Partner" to +91 90750 18192</span></div>
+</section>
+
+</body>
+</html>

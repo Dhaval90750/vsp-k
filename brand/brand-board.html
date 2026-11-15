@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VSp!k Brand Board</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #15171C;
+    --paper: #F3F0E8;
+    --muted: #6B6A66;
+    --line: #DAD5C9;
+    --signal: #E5482B;
+    --signal-text: #B8341C;
+    --volt: #C8F031;
+    --accent: var(--signal);
+  }
+  body[data-accent="volt"] { --accent: var(--volt); }
+
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 16px/1.55 "Instrument Sans", system-ui, sans-serif;
+    padding: 48px 16px 96px;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; }
+  h1, h2, .display { font-family: "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; }
+  h1 { font-size: clamp(32px, 6vw, 56px); font-weight: 800; line-height: 1.05; }
+  h2 { font-size: 24px; font-weight: 700; margin-bottom: 16px; }
+  .label { font: 500 12px/1 "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  .intro { max-width: 60ch; color: var(--muted); margin-top: 12px; }
+  section { margin-top: 64px; }
+
+  .toggle { display: inline-flex; gap: 0; margin-top: 24px; border: 1.5px solid var(--ink); }
+  .toggle button {
+    font: 600 14px "Instrument Sans", sans-serif; padding: 10px 16px; min-height: 44px;
+    background: transparent; color: var(--ink); border: 0; cursor: pointer;
+  }
+  .toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .card { border: 1.5px solid var(--line); background: #FBFAF6; padding: 24px; }
+  .card.dark { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .card .stage { height: 200px; display: grid; place-items: center; }
+  .card h3 { font: 700 18px "Bricolage Grotesque", sans-serif; margin-top: 16px; }
+  .card p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+  .card.dark p { color: #A9A7A0; }
+  .tag { display: inline-block; font: 500 11px "JetBrains Mono", monospace; padding: 4px 8px; border: 1px solid currentColor; margin-top: 12px; }
+
+  .wordmark { display: inline-flex; align-items: flex-end; font: 800 76px/0.8 "Bricolage Grotesque", sans-serif; letter-spacing: -0.045em; }
+  .wordmark svg { height: 0.82em; width: auto; margin: 0 -0.02em 0 0.01em; }
+
+  .spike-fill { fill: var(--accent); }
+  .ink-fill { fill: currentColor; }
+
+  .swatches { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .sw { border: 1.5px solid var(--line); background: #FBFAF6; }
+  .sw .chip { height: 96px; }
+  .sw div:last-child { padding: 12px; font-size: 14px; }
+  .sw code { font: 500 12px "JetBrains Mono", monospace; color: var(--muted); }
+
+  .type-row { display: grid; grid-template-columns: 160px 1fr; gap: 16px; padding: 20px 0; border-top: 1.5px solid var(--line); align-items: baseline; }
+  @media (max-width: 600px) { .type-row { grid-template-columns: 1fr; gap: 6px; } .wordmark { font-size: 56px; } }
+
+  .apps { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-end; }
+  .app { width: 120px; height: 120px; display: grid; place-items: center; border-radius: 28px; }
+  .app svg { width: 56%; height: 56%; }
+  .app.sm { width: 48px; height: 48px; border-radius: 12px; }
+  .app.round { border-radius: 50%; }
+
+  .post { width: 270px; aspect-ratio: 4/5; background: var(--paper); border: 1.5px solid var(--line); padding: 22px; display: flex; flex-direction: column; position: relative; }
+  .post .k { position: absolute; top: 18px; right: 18px; width: 22px; }
+  .post .big { font: 800 34px/1 "Bricolage Grotesque", sans-serif; letter-spacing: -0.03em; margin-top: auto; }
+  .post .big em { font-style: normal; background: var(--accent); color: var(--ink); padding: 0 4px; }
+  body:not([data-accent="volt"]) .post .big em { color: var(--paper); }
+  .post .foot { display: flex; justify-content: space-between; margin-top: 18px; padding-top: 12px; border-top: 1.5px solid var(--ink); font: 500 11px "JetBrains Mono", monospace; }
+  .note { font-size: 14px; color: var(--muted); margin-top: 12px; max-width: 70ch; }
+
+  /* ---- Feel layer ---- */
+
+  /* Paper grain: makes "paper" read as a printed surface, not a flat screen fill */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    opacity: 0.12; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .08  0 0 0 0 .08  0 0 0 0 .1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Accent switch fades instead of snapping */
+  .spike-fill, .app, .post .big em, .sw .chip { transition: fill .35s ease, background-color .35s ease, color .35s ease; }
+
+  /* The spike stamps into place: the brand's one signature motion */
+  @keyframes stamp {
+    0%   { transform: translateY(-38%) skewX(8deg); opacity: 0; }
+    55%  { transform: translateY(5%) skewX(-6deg); opacity: 1; }
+    75%  { transform: translateY(-2%) skewX(-2deg); }
+    100% { transform: none; }
+  }
+  .stage svg, .wordmark svg, .app svg, .post .k { animation: stamp .7s cubic-bezier(.2,.8,.2,1) both; transform-origin: 50% 100%; }
+  .grid .card:nth-child(2) .stage svg { animation-delay: .08s; }
+  .grid .card:nth-child(3) .stage svg { animation-delay: .16s; }
+
+  /* Cards: a hard, offset print shadow on hover; the mark leans further forward */
+  .card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+  .card:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--ink); border-color: var(--ink); }
+  .card.dark:hover { box-shadow: 6px 6px 0 var(--accent); }
+  .card .stage svg { transition: transform .25s cubic-bezier(.2,.8,.2,1); }
+  .card:hover .stage svg { transform: skewX(-7deg) translateX(4px); }
+
+  /* Swatches lift slightly so they feel like physical colour chips */
+  .sw { transition: transform .2s ease; }
+  .sw:hover { transform: translateY(-4px) rotate(-1deg); }
+
+  /* Post highlight sweeps in like a marker stroke */
+  @keyframes marker { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+  .post .big em {
+    background: linear-gradient(var(--accent), var(--accent)) no-repeat left / 0% 100%;
+    animation: marker .6s .5s cubic-bezier(.2,.8,.2,1) forwards;
+    box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  }
+
+  /* Headline: the "!" mood in the title, a tiny accent full stop */
+  h1 .dot { color: var(--accent); transition: color .35s ease; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .post .big em { background-size: 100% 100%; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- Spike-bang: "!" drawn as a downward spike with a square dot, tilted forward -->
+    <g id="spike">
+      <g transform="translate(9 0) skewX(-10)">
+        <path d="M34 4 H66 L54 68 H46 Z"/>
+        <rect x="40" y="76" width="20" height="20"/>
+      </g>
+    </g>
+    <!-- V-rise: right arm overshoots the left -->
+    <g id="vrise">
+      <path d="M10 30 L40 88 L90 4" fill="none" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="wrap">
+  <p class="label">VSp!k · brand direction · draft v0.1</p>
+  <h1>Pick a mark<span class="dot">.</span><br>Then we build everything else<span class="dot">.</span></h1>
+  <p class="intro">Three logo concepts, two accent colours and the type system. These are drafts. The chosen logo gets redrawn as clean vector paths before use.</p>
+
+  <div class="toggle" role="group" aria-label="Accent colour">
+    <button type="button" aria-pressed="true" data-accent="signal">Option 1 · Signal</button>
+    <button type="button" aria-pressed="false" data-accent="volt">Option 2 · Volt</button>
+  </div>
+
+  <section>
+    <h2>Logo concepts</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="stage">
+          <svg viewBox="0 0 100 100" width="150" height="150" aria-label="Spike-bang mark"><use href="#spike" class="spike-fill"/></svg>
+        </div>
+        <h3>A · Spike-bang</h3>
+        <p>The "!" as a sharp spike with a square dot, leaning forward. Works alone as an avatar or favicon.</p>
+        <span class="tag">ICON</span>
+      </div>
+
+      <div class="card">
+        <div class="stage" style="color:var(--ink)">
+          <svg viewBox="0 0 100 100" width="150" height="150" aria-label="V-rise mark"><use href="#vrise" stroke="currentColor"/><rect x="80" y="84" width="14" height="14" class="spike-fill"/></svg>
+        </div>
+        <h3>B · V-rise</h3>
+        <p>A V whose right arm overshoots, like a chart spike or a tick. Reads as "delivered".</p>
+        <span class="tag">ICON</span>
+      </div>
+
+      <div class="card">
+        <div class="stage">
+          <span class="wordmark" aria-label="VSp!k">VSp<svg viewBox="28 0 50 100" aria-hidden="true"><use href="#spike" class="spike-fill"/></svg>k</span>
+        </div>
+        <h3>C · Wordmark</h3>
+        <p>The name set tight, with the spike from A as the "!". The main logo for site headers and documents.</p>
+        <span class="tag">RECOMMENDED · WITH A</span>
+      </div>
+    </div>
+
+    <div class="grid" style="margin-top:16px">
+      <div class="card dark">
+        <div class="stage">
+          <span class="wordmark" aria-label="VSp!k" style="color:var(--paper)">VSp<svg viewBox="28 0 50 100" aria-hidden="true"><use href="#spike" class="spike-fill"/></svg>k</span>
+        </div>
+        <h3>Wordmark on dark</h3>
+        <p>Holds up when reversed. Volt reads especially well here.</p>
+      </div>
+      <div class="card">
+        <div class="stage">
+          <div class="apps">
+            <div class="app" style="background:var(--ink)"><svg viewBox="0 0 100 100"><use href="#spike" class="spike-fill"/></svg></div>
+            <div class="app round" style="background:var(--accent)"><svg viewBox="0 0 100 100"><use href="#spike" fill="#15171C"/></svg></div>
+            <div class="app sm" style="background:var(--ink)"><svg viewBox="0 0 100 100"><use href="#spike" class="spike-fill"/></svg></div>
+          </div>
+        </div>
+        <h3>Icon in use</h3>
+        <p>App icon, Instagram and LinkedIn avatar, and favicon size (48 px).</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Palette</h2>
+    <div class="swatches">
+      <div class="sw"><div class="chip" style="background:#15171C"></div><div>Ink<br><code>#15171C</code></div></div>
+      <div class="sw"><div class="chip" style="background:#F3F0E8"></div><div>Paper<br><code>#F3F0E8</code></div></div>
+      <div class="sw"><div class="chip" style="background:#E5482B"></div><div>Signal (opt 1)<br><code>#E5482B</code></div></div>
+      <div class="sw"><div class="chip" style="background:#C8F031"></div><div>Volt (opt 2)<br><code>#C8F031</code></div></div>
+      <div class="sw"><div class="chip" style="background:#6B6A66"></div><div>Muted<br><code>#6B6A66</code></div></div>
+      <div class="sw"><div class="chip" style="background:#DAD5C9"></div><div>Line<br><code>#DAD5C9</code></div></div>
+    </div>
+    <p class="note">One accent per screen or post, used only for the "!" and the single primary action. No gradients. Signal text at body size uses #B8341C for AA contrast. Volt is never used as text on paper.</p>
+  </section>
+
+  <section>
+    <h2>Type</h2>
+    <div class="type-row"><span class="label">Display</span><span class="display" style="font-size:40px;font-weight:800;line-height:1.05">Your site, live by Friday.</span></div>
+    <div class="type-row"><span class="label">Body</span><span style="font-size:18px;max-width:56ch">Fixed price, fixed date. You see working software every two days, not slides. Bricolage Grotesque for headings, Instrument Sans for reading.</span></div>
+    <div class="type-row"><span class="label">Label</span><span class="label" style="color:var(--ink);font-size:14px">v1.0 live · 48h · ₹ fixed</span></div>
+  </section>
+
+  <section>
+    <h2>How a post would look</h2>
+    <div class="apps">
+      <div class="post">
+        <svg class="k" viewBox="0 0 100 100"><use href="#spike" class="spike-fill"/></svg>
+        <span class="label">Layout example</span>
+        <div class="big">Most small-business sites lose the visitor in <em>3 seconds.</em></div>
+        <div class="foot"><span>VSP!K</span><span>1 / 6</span></div>
+      </div>
+      <div class="post" style="background:var(--ink);color:var(--paper);border-color:var(--ink)">
+        <svg class="k" viewBox="0 0 100 100"><use href="#spike" class="spike-fill"/></svg>
+        <span class="label">Layout example</span>
+        <div class="big">Fixed price.<br>Fixed date.<br><em>No surprises.</em></div>
+        <div class="foot" style="border-color:var(--paper)"><span>VSP!K</span><span>vspik.in</span></div>
+      </div>
+    </div>
+    <p class="note">These show layout and type only. The headline copy is a format example; the domain is a placeholder until you confirm one, and the "3 seconds" line needs a real source before it can be published.</p>
+  </section>
+</div>
+
+<script>
+  document.querySelectorAll('.toggle button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.body.dataset.accent = b.dataset.accent;
+      document.querySelectorAll('.toggle button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VSp!k Logo Explorations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #15171C;
+    --ink-2: #2B2E36;
+    --paper: #F3F0E8;
+    --paper-2: #E9E3D6;
+    --card: #FBFAF6;
+    --muted: #6B6A66;
+    --line: #DAD5C9;
+    --signal: #E5482B;
+    --volt: #C8F031;
+    --accent: var(--signal);
+    --on-accent: #FBFAF6;
+  }
+  body[data-accent="volt"] { --accent: var(--volt); --on-accent: #15171C; }
+
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font: 400 16px/1.55 "Instrument Sans", system-ui, sans-serif;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100;
+    opacity: 0.12; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .08  0 0 0 0 .08  0 0 0 0 .1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  .label { font: 500 12px/1 "JetBrains Mono", monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+  h2 { font: 700 28px/1.1 "Bricolage Grotesque", sans-serif; letter-spacing: -0.02em; }
+
+  /* ---------- Hero: cut-out letters ---------- */
+  .hero { padding: 56px 0 96px; position: relative; }
+  .hero p.lead { max-width: 56ch; color: var(--muted); margin-top: 20px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 28px; align-items: flex-end; }
+  .chip {
+    --r: 0deg;
+    display: inline-grid; place-items: center;
+    font: 800 clamp(64px, 14vw, 150px)/1 "Bricolage Grotesque", sans-serif;
+    letter-spacing: -0.04em;
+    padding: 0.06em 0.14em 0.1em;
+    transform: rotate(var(--r));
+    box-shadow: 2px 3px 0 rgba(21,23,28,.18), 0 10px 18px -6px rgba(21,23,28,.25);
+    clip-path: polygon(0% 3%, 8% 0%, 30% 2%, 55% 0%, 78% 3%, 100% 0%, 98% 30%, 100% 62%, 97% 100%, 70% 97%, 45% 100%, 20% 98%, 2% 100%, 0% 70%, 2% 40%);
+    animation: chipIn .7s cubic-bezier(.2,.9,.25,1.2) both;
+    animation-delay: calc(var(--i) * 90ms);
+    transition: transform .25s cubic-bezier(.2,.8,.2,1);
+    cursor: default;
+  }
+  /* clip-path cuts the box-shadow, so the shadow comes from a wrapper */
+  .chip-wrap { filter: drop-shadow(2px 3px 0 rgba(21,23,28,.16)) drop-shadow(0 10px 10px rgba(21,23,28,.14)); }
+  .chip-wrap:hover .chip { transform: rotate(calc(var(--r) * -1)) translateY(-8px); }
+  .c-paper { background: var(--card); color: var(--ink); }
+  .c-ink { background: var(--ink); color: var(--paper); }
+  .c-kraft { background: #D9C7A7; color: var(--ink); }
+  .c-accent { background: var(--accent); color: var(--on-accent); transition: background-color .35s ease, transform .25s cubic-bezier(.2,.8,.2,1); }
+  .c-accent svg { height: 0.8em; width: auto; }
+  .c-accent svg .f { fill: var(--on-accent); transition: fill .35s ease; }
+  @keyframes chipIn {
+    0% { opacity: 0; transform: translateY(-60px) rotate(calc(var(--r) * 6)); }
+    60% { opacity: 1; transform: translateY(6px) rotate(calc(var(--r) * -1.5)); }
+    100% { transform: rotate(var(--r)); }
+  }
+
+  .toggle { display: inline-flex; margin-top: 32px; border: 1.5px solid var(--ink); background: var(--card); }
+  .toggle button { font: 600 14px "Instrument Sans", sans-serif; padding: 10px 16px; min-height: 44px; background: transparent; color: var(--ink); border: 0; cursor: pointer; }
+  .toggle button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Torn edge into the explorations section ---------- */
+  .torn { display: block; width: 100%; height: 28px; margin-bottom: -1px; }
+  .torn path { fill: var(--paper-2); }
+  .explore { background: var(--paper-2); padding: 48px 0 96px; }
+  .explore .sub { color: var(--muted); max-width: 64ch; margin-top: 8px; }
+
+  /* ---------- Paper cards ---------- */
+  .grid { display: grid; gap: 40px 28px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); margin-top: 40px; }
+  .pc-card {
+    --r: 0deg;
+    position: relative; background: var(--card); padding: 20px 20px 22px;
+    transform: rotate(var(--r));
+    box-shadow: 1px 2px 0 rgba(21,23,28,.08), 0 14px 24px -12px rgba(21,23,28,.35);
+    transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
+    cursor: pointer;
+  }
+  .pc-card:hover, .pc-card:focus-visible { transform: rotate(0deg) translateY(-6px); box-shadow: 1px 2px 0 rgba(21,23,28,.08), 0 26px 34px -14px rgba(21,23,28,.4); outline: none; }
+  .pc-card:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+  .tape {
+    position: absolute; top: -12px; left: 50%; width: 92px; height: 26px;
+    transform: translateX(-50%) rotate(var(--tr, -3deg));
+    background: rgba(233, 222, 190, .72);
+    border-left: 1px dashed rgba(0,0,0,.06); border-right: 1px dashed rgba(0,0,0,.06);
+    box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  }
+  .mark { display: block; width: 100%; aspect-ratio: 1; background: var(--paper); }
+  .pc-card h3 { font: 700 19px "Bricolage Grotesque", sans-serif; margin-top: 16px; display: flex; gap: 8px; align-items: baseline; }
+  .pc-card h3 .n { font: 500 12px "JetBrains Mono", monospace; color: var(--muted); }
+  .pc-card p { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
+  .pc-card .replay { font: 500 11px "JetBrains Mono", monospace; color: var(--muted); margin-top: 10px; display: block; letter-spacing: .04em; }
+
+  html.js .pc-card { opacity: 0; }
+  html.js .pc-card.seen { animation: fall .8s cubic-bezier(.2,.9,.25,1.15) both; }
+  @keyframes fall {
+    0% { opacity: 0; transform: translateY(-40px) rotate(calc(var(--r) * 5)); }
+    65% { opacity: 1; transform: translateY(4px) rotate(calc(var(--r) * -1)); }
+    100% { opacity: 1; transform: rotate(var(--r)); }
+  }
+
+  /* ---------- SVG mark pieces ---------- */
+  .mark g, .mark rect, .mark polygon, .mark polyline, .mark path, .mark circle { transform-box: fill-box; transform-origin: center; }
+  .acc { fill: var(--accent); transition: fill .35s ease; }
+  .acc-s { stroke: var(--accent); transition: stroke .35s ease; }
+  .ink { fill: var(--ink); }
+  .ink2 { fill: var(--ink-2); }
+  .card-f { fill: var(--card); }
+  .kraft { fill: #D9C7A7; }
+
+  /* animations run when the card has .play (on first view, and on click) */
+  .play .a-drop   { animation: aDrop .7s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-drop2  { animation: aDrop .7s .18s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-drop3  { animation: aDrop .7s .34s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-draw   { stroke-dasharray: 1; animation: aDraw 1.1s .15s cubic-bezier(.6,0,.2,1) both; }
+  .play .a-pop    { animation: aPop .6s .9s cubic-bezier(.2,.9,.25,1.4) both; }
+  .play .a-pop0   { animation: aPop .6s cubic-bezier(.2,.9,.25,1.4) both; }
+  .play .a-flip   { transform-origin: 50% 100%; animation: aFlip .75s .25s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-grow1  { transform-origin: 50% 100%; animation: aGrow .5s .05s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-grow2  { transform-origin: 50% 100%; animation: aGrow .5s .2s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-grow3  { transform-origin: 50% 100%; animation: aGrow .65s .38s cubic-bezier(.2,.9,.25,1.3) both; }
+  .play .a-left   { animation: aLeft .6s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-right  { animation: aRight .6s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-pin    { animation: aPin .6s .35s cubic-bezier(.3,1.4,.4,1) both; }
+  .play .a-wobble { animation: aWobble .9s .75s ease-out both; }
+  .play .a-spin   { animation: aSpin .8s cubic-bezier(.2,.9,.25,1.2) both; }
+  .play .a-slide  { animation: aSlide .7s .1s cubic-bezier(.2,.9,.25,1.15) both; }
+
+  @keyframes aDrop  { 0% { opacity: 0; transform: translateY(-40%) rotate(-14deg); } 60% { opacity: 1; transform: translateY(4%) rotate(3deg); } 100% { transform: none; } }
+  @keyframes aDraw  { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+  @keyframes aPop   { 0% { opacity: 0; transform: scale(0); } 100% { opacity: 1; transform: none; } }
+  @keyframes aFlip  { 0% { transform: scaleY(0) skewX(20deg); } 100% { transform: none; } }
+  @keyframes aGrow  { 0% { transform: scaleY(0); } 100% { transform: none; } }
+  @keyframes aLeft  { 0% { opacity: 0; transform: translateX(-50%) rotate(-20deg); } 100% { opacity: 1; transform: none; } }
+  @keyframes aRight { 0% { opacity: 0; transform: translateX(50%) rotate(20deg); } 100% { opacity: 1; transform: none; } }
+  @keyframes aPin   { 0% { opacity: 0; transform: translateY(-70%) scale(1.3); } 100% { opacity: 1; transform: none; } }
+  @keyframes aWobble { 0% { transform: rotate(0); } 25% { transform: rotate(-5deg); } 50% { transform: rotate(3deg); } 75% { transform: rotate(-1.5deg); } 100% { transform: rotate(0); } }
+  @keyframes aSpin  { 0% { opacity: 0; transform: rotate(-120deg) scale(.4); } 100% { opacity: 1; transform: none; } }
+  @keyframes aSlide { 0% { transform: translate(-14px, -14px); } 100% { transform: none; } }
+
+  /* hover: layers separate a little, like lifting cut paper */
+  .pc-card:hover .lift { transform: translate(-4px, -5px); transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+  .lift { transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+
+  .notes { margin-top: 64px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .notes div { border-top: 1.5px solid var(--ink); padding-top: 12px; font-size: 15px; color: var(--muted); }
+  .notes b { color: var(--ink); display: block; font: 700 16px "Bricolage Grotesque", sans-serif; margin-bottom: 4px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html.js .pc-card { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js');</script>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- scissor-cut edge + real paper shadow -->
+    <filter id="cut" x="-25%" y="-25%" width="150%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.045" numOctaves="2" seed="7" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="3" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feDropShadow in="d" dx="1.5" dy="3" stdDeviation="2.2" flood-color="#15171C" flood-opacity=".3"/>
+    </filter>
+    <filter id="cutSoft" x="-25%" y="-25%" width="150%" height="160%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="2" seed="3" result="t"/>
+      <feDisplacementMap in="SourceGraphic" in2="t" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="d"/>
+      <feDropShadow in="d" dx="1" dy="2" stdDeviation="1.4" flood-color="#15171C" flood-opacity=".22"/>
+    </filter>
+    <g id="spike">
+      <g transform="translate(9 0) skewX(-10)">
+        <path d="M34 4 H66 L54 68 H46 Z"/>
+        <rect x="40" y="76" width="20" height="20"/>
+      </g>
+    </g>
+    <mask id="notchMask" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200">
+      <rect width="200" height="200" fill="#fff"/>
+      <g transform="translate(46 40) scale(1.2)" fill="#000"><use href="#spike"/></g>
+    </mask>
+  </defs>
+</svg>
+
+<header class="hero wrap">
+  <p class="label">VSp!k · logo explorations · round 2 · cut paper</p>
+  <div class="chips" aria-label="VSp!k">
+    <span class="chip-wrap"><span class="chip c-ink" style="--i:0;--r:-4deg">V</span></span>
+    <span class="chip-wrap"><span class="chip c-paper" style="--i:1;--r:3deg">S</span></span>
+    <span class="chip-wrap"><span class="chip c-kraft" style="--i:2;--r:-2deg">p</span></span>
+    <span class="chip-wrap"><span class="chip c-accent" style="--i:3;--r:6deg"><svg viewBox="28 0 50 100" aria-hidden="true"><use href="#spike" class="f"/></svg></span></span>
+    <span class="chip-wrap"><span class="chip c-paper" style="--i:4;--r:-3deg">k</span></span>
+  </div>
+  <p class="lead">Eight more directions, all built from the same idea: something sharp that rises fast. Each one is shown as cut paper so you can judge the shape and the feeling, not only the drawing. Hover over a card to lift its layers, or click it to replay the animation.</p>
+  <div class="toggle" role="group" aria-label="Accent colour">
+    <button type="button" aria-pressed="true" data-accent="signal">Signal</button>
+    <button type="button" aria-pressed="false" data-accent="volt">Volt</button>
+  </div>
+</header>
+
+<svg class="torn" viewBox="0 0 1200 28" preserveAspectRatio="none" aria-hidden="true"><path id="tornPath" d=""/></svg>
+
+<main class="explore">
+  <div class="wrap">
+    <h2>Eight spikes</h2>
+    <p class="sub">Numbers 01 to 08 continue from concepts A, B and C on the first board. Each mark is shown on its own; the final pick gets paired with the wordmark.</p>
+
+    <div class="grid">
+
+      <!-- 01 Pulse -->
+      <article class="pc-card" tabindex="0" style="--r:-1.4deg;--tr:-4deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Pulse mark">
+          <g filter="url(#cutSoft)">
+            <polyline class="a-draw acc-s" pathLength="1" points="18,128 62,128 74,112 86,128 100,128 118,26 134,168 148,128 162,128" fill="none" stroke-width="11" stroke-linejoin="miter" stroke-miterlimit="12" stroke-linecap="butt"/>
+          </g>
+          <g filter="url(#cut)"><rect class="ink a-pop" x="160" y="120" width="18" height="18"/></g>
+        </svg>
+        <h3><span class="n">01</span>Pulse</h3>
+        <p>A flat line that suddenly spikes: the moment a business gets moving. Ends in the square dot from the "!".</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+      <!-- 02 Notch -->
+      <article class="pc-card" tabindex="0" style="--r:1.2deg;--tr:3deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Notch mark">
+          <g filter="url(#cut)"><rect class="acc" x="50" y="50" width="116" height="116" transform="rotate(4 108 108)"/></g>
+          <g class="lift"><g class="a-slide"><g filter="url(#cut)"><rect class="ink" x="36" y="34" width="120" height="120" mask="url(#notchMask)"/></g></g></g>
+        </svg>
+        <h3><span class="n">02</span>Notch</h3>
+        <p>The spike is cut out of a dark block, and the colour shows through the hole. A strong, stamp-like icon.</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+      <!-- 03 Fold -->
+      <article class="pc-card" tabindex="0" style="--r:-0.8deg;--tr:-2deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Fold mark">
+          <g filter="url(#cut)"><polygon class="ink2 a-drop" points="24,54 58,54 106,176 72,176"/></g>
+          <g class="lift"><g filter="url(#cut)"><polygon class="acc a-flip" points="72,176 106,176 186,10 152,10"/></g></g>
+          <polygon points="72,176 106,176 96,150 82,150" fill="rgba(0,0,0,.18)"/>
+        </svg>
+        <h3><span class="n">03</span>Fold</h3>
+        <p>A paper strip folded into a V. The right side flips up higher than the left, so the fold itself is the spike.</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+      <!-- 04 Steps -->
+      <article class="pc-card" tabindex="0" style="--r:1.6deg;--tr:5deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Steps mark">
+          <g filter="url(#cut)"><rect class="kraft a-grow1" x="28" y="128" width="40" height="46"/></g>
+          <g filter="url(#cut)"><rect class="ink2 a-grow2" x="78" y="94" width="40" height="80"/></g>
+          <g class="lift"><g filter="url(#cut)"><polygon class="acc a-grow3" points="128,174 170,174 162,14"/></g></g>
+        </svg>
+        <h3><span class="n">04</span>Steps</h3>
+        <p>Build, test, ship. Two steady bars, then a spike. Works well in growth and results posts.</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+      <!-- 05 Pin -->
+      <article class="pc-card" tabindex="0" style="--r:-1.8deg;--tr:-5deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Pin mark">
+          <g class="a-wobble" style="transform-origin:100px 52px">
+            <g filter="url(#cut)"><rect class="card-f" x="44" y="50" width="112" height="112" transform="rotate(-6 100 106)"/></g>
+            <g transform="rotate(-6 100 106)" opacity=".55">
+              <rect class="ink" x="62" y="92" width="64" height="7"/>
+              <rect class="ink" x="62" y="108" width="76" height="7"/>
+              <rect class="ink" x="62" y="124" width="48" height="7"/>
+            </g>
+          </g>
+          <g class="a-pin"><g filter="url(#cut)">
+            <polygon class="acc" points="92,50 108,50 101,96 99,96"/>
+            <rect class="ink" x="84" y="26" width="32" height="32" transform="rotate(8 100 42)"/>
+          </g></g>
+        </svg>
+        <h3><span class="n">05</span>Pin</h3>
+        <p>The "!" flipped upside down becomes a pushpin. We pin your idea down and make it real.</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+      <!-- 06 Code bang -->
+      <article class="pc-card" tabindex="0" style="--r:0.9deg;--tr:2deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Code bang mark">
+          <g class="a-left"><g filter="url(#cut)"><polygon class="ink" points="62,52 78,66 44,100 78,134 62,148 14,100"/></g></g>
+          <g class="a-right"><g filter="url(#cut)"><polygon class="ink" points="138,52 122,66 156,100 122,134 138,148 186,100"/></g></g>
+          <g class="a-drop2"><g class="lift"><g filter="url(#cut)" transform="translate(68 46) scale(.64)"><use href="#spike" class="acc"/></g></g></g>
+        </svg>
+        <h3><span class="n">06</span>Code bang</h3>
+        <p>The spike inside code brackets: &lt;!&gt;. Tells developers and founders straight away that we build software.</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+      <!-- 07 Shout -->
+      <article class="pc-card" tabindex="0" style="--r:-1.1deg;--tr:-3deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Shout mark">
+          <g class="a-pop0" style="transform-origin:40px 180px"><g filter="url(#cut)">
+            <path class="acc" d="M36 28 H170 V128 H86 L30 184 L52 128 H36 Z"/>
+          </g></g>
+          <g class="a-drop2"><g class="lift"><g filter="url(#cut)" transform="translate(66 36) scale(.8)"><use href="#spike" class="ink"/></g></g></g>
+        </svg>
+        <h3><span class="n">07</span>Shout</h3>
+        <p>A speech bubble whose tail is a sharp spike. Says "we answer fast and we speak plainly".</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+      <!-- 08 Seal -->
+      <article class="pc-card" tabindex="0" style="--r:1.3deg;--tr:4deg">
+        <span class="tape"></span>
+        <svg class="mark" viewBox="0 0 200 200" role="img" aria-label="Seal mark">
+          <g class="a-spin"><g filter="url(#cut)"><polygon id="burst" class="ink" points=""/></g></g>
+          <g class="a-drop2"><g class="lift"><g filter="url(#cutSoft)" transform="translate(66 52) scale(.7)"><use href="#spike" class="acc"/></g></g></g>
+        </svg>
+        <h3><span class="n">08</span>Seal</h3>
+        <p>A spiky, uneven sticker like a "shipped" stamp on a parcel. Fun on posts, stickers and laptop merch.</p>
+        <span class="replay">click to replay</span>
+      </article>
+
+    </div>
+
+    <div class="notes">
+      <div><b>Strongest as an icon</b>02 Notch and 05 Pin. Both stay clear even at 32 px, and both are unusual.</div>
+      <div><b>Best story</b>01 Pulse and 04 Steps. Easy to explain in one line on a post, but chart marks are common, so they need careful drawing.</div>
+      <div><b>Most playful</b>07 Shout and 08 Seal. Great for social media; a little loud for invoices and proposals.</div>
+    </div>
+  </div>
+</main>
+
+<script>
+  // torn paper edge
+  (function () {
+    var d = 'M0 28 L0 14', x = 0, s = 11;
+    while (x < 1200) { x += 6 + (s = (s * 9301 + 49297) % 233280) / 233280 * 14; d += ' L' + x.toFixed(1) + ' ' + (6 + (s * 7 % 233280) / 233280 * 16).toFixed(1); }
+    document.getElementById('tornPath').setAttribute('d', d + ' L1200 28 Z');
+  })();
+
+  // uneven burst for 08
+  (function () {
+    var pts = [], n = 22, s = 5;
+    for (var i = 0; i < n; i++) {
+      s = (s * 9301 + 49297) % 233280;
+      var r = i % 2 ? 58 + (s / 233280) * 8 : 84 + (s / 233280) * 12;
+      var a = (i / n) * Math.PI * 2 - Math.PI / 2;
+      pts.push((100 + r * Math.cos(a)).toFixed(1) + ',' + (104 + r * Math.sin(a)).toFixed(1));
+    }
+    document.getElementById('burst').setAttribute('points', pts.join(' '));
+  })();
+
+  // accent toggle
+  document.querySelectorAll('.toggle button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      document.body.dataset.accent = b.dataset.accent;
+      document.querySelectorAll('.toggle button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    });
+  });
+
+  // cards fall in when they scroll into view, then play their mark animation
+  var cards = document.querySelectorAll('.pc-card');
+  function play(c) { c.classList.remove('play'); void c.offsetWidth; c.classList.add('play'); }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e, k) {
+        if (e.isIntersecting) {
+          var c = e.target;
+          setTimeout(function () { c.classList.add('seen'); play(c); }, k * 90);
+          io.unobserve(c);
+        }
+      });
+    }, { threshold: 0.25 });
+    cards.forEach(function (c) { io.observe(c); });
+  } else {
+    cards.forEach(function (c) { c.classList.add('seen', 'play'); });
+  }
+  cards.forEach(function (c) {
+    c.addEventListener('click', function () { play(c); });
+    c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(c); } });
+  });
+</script>
+</body>
+</html>
