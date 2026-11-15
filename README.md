@@ -50,7 +50,7 @@ Every project follows the [quality framework](docs/00-quality-framework.md). Not
 | Quality framework | Done (v1.0) |
 | Brand and logo | Done: cut-paper wordmark |
 | Studio website | Live at [vsp-k-website.vercel.app](https://vsp-k-website.vercel.app) |
-| Social posts | Reel 01 (15 s video), batch 01 (12 images) and batch 02 (5 images), with captions |
+| Social posts | Reel 02 (21.5 s, original music), reel 01 (15 s), batch 01 (12 images) and batch 02 (5 images), with captions |
 | Partner programme | Terms written in [docs/02-partner-programme.md](docs/02-partner-programme.md) |
 | Portfolio | The Mobile Factory (launching soon), Hotel Balaji Holiday Home (live) |
 

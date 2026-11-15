@@ -4,7 +4,8 @@
 
 | What | Where |
 |---|---|
-| Reel (15 s video, 1080 × 1920) + cover | [`reels/reel-01.mp4`](reels/reel-01.mp4), [`reels/reel-01-cover.jpg`](reels/reel-01-cover.jpg) (source: [reel-01.html](reels/reel-01.html)) |
+| **Reel 02 with original music** (21.5 s) + cover | [`reels/reel-02.mp4`](reels/reel-02.mp4), [`reels/reel-02-cover.jpg`](reels/reel-02-cover.jpg) (source: [reel-02.html](reels/reel-02.html), music: [reel-02-music.py](reels/reel-02-music.py)) |
+| Reel 01 (15 s, no audio) + cover | [`reels/reel-01.mp4`](reels/reel-01.mp4), [`reels/reel-01-cover.jpg`](reels/reel-01-cover.jpg) (source: [reel-01.html](reels/reel-01.html)) |
 | Ready-to-post images (1080 × 1350) | [`instagram/batch-01/`](instagram/batch-01/), [`instagram/batch-02/`](instagram/batch-02/) |
 | Captions for Instagram and LinkedIn, plus the suggested posting order | [captions.md](captions.md) |
 | LinkedIn notes | [`linkedin/`](linkedin/) |

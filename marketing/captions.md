@@ -259,9 +259,39 @@ Add a trending audio in the Instagram app before posting; the video has no sound
 
 ---
 
+## Reel 02: "POV: you asked for a website" (reels/reel-02.mp4, 21.5 s, with music)
+
+The soundtrack is original and synthesized for this reel (no copyright issues). Post it with **its own audio**. Cover: reels/reel-02-cover.jpg.
+
+**Instagram**
+> POV: you asked an agency for a website 😴
+> Day 1: kal pakka. Day 7: kal pakka. Day 30: kal pakka 🙃
+>
+> Then: Day 1 brief ✓ Day 3 working link ✓ Day 5 LIVE ✓
+>
+> Websites · Online stores · Apps · AI · Data · Your codebase
+> Pune-based. Partners earn up to 15%.
+>
+> 📱 WhatsApp +91 90750 18192
+> Tag someone still waiting for "kal" 👇
+>
+> #kalpakka #pune #punebusiness #webdevelopment #reelsindia #relatable #startupindia
+
+**LinkedIn**
+> Every business owner has heard "kal pakka" (definitely tomorrow) at least once.
+>
+> Our version: brief and fixed quote on day 1, a working link on day 3, live on day 5 for a typical business website. Bigger projects get their own fixed date, in writing.
+>
+> Based in Pune. Freelancers, agencies and dev teams can partner with us and earn up to 15%.
+>
+> #pune #webdevelopment #softwaredevelopment
+
+---
+
 ## Post order (suggested)
 
-1. Reel 01: first post, pin it to the top of the profile
+1. Reel 02: first post, pin it (it has music and the strongest hook)
+1b. Reel 01: post a week later
 2. Newton carousel: strong first impression
 3. Mere bhatije
 4. Mitochondria

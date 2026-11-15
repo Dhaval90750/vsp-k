@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VSp!k Reel 02</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,800&family=Instrument+Sans:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#15171C; --paper:#F3F0E8; --paper2:#E2DDD2; --card:#FBFAF6; --kraft:#D9C7A7; --accent:#E5482B; --volt:#C8F031; --muted:#5E5D59;
+    --display:"Bricolage Grotesque",sans-serif; --body:"Instrument Sans",sans-serif; --mono:"JetBrains Mono",monospace;
+    --spring: cubic-bezier(.2,.9,.25,1.25); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1080px; height:1920px; overflow:hidden; }
+  body { background:var(--paper); color:var(--ink); font-family:var(--body); }
+  #cam { position:absolute; inset:0; animation: shake .35s linear 5s both, shake .3s linear 9.5s, shake .3s linear 19s; }
+  @keyframes shake { 0%,100% { transform:none } 15% { transform:translate(-14px,10px) rotate(-.6deg) } 30% { transform:translate(12px,-8px) rotate(.5deg) } 45% { transform:translate(-8px,6px) } 60% { transform:translate(6px,-4px) } 80% { transform:translate(-3px,2px) } }
+  .grain { position:absolute; inset:0; z-index:60; pointer-events:none; opacity:.14; mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .08  0 0 0 0 .08  0 0 0 0 .1  0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+  .scene { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:150px 90px; text-align:center; opacity:0;
+    animation: vis var(--dur) linear var(--at) both; }
+  @keyframes vis { 0% { opacity:0 } 4% { opacity:1 } 96% { opacity:1 } 100% { opacity:0 } }
+  .cut { animation-name: cut; animation-fill-mode: forwards; }
+  @keyframes cut { 0%, 99.9% { opacity:1 } 100% { opacity:0 } }
+  .last { animation-name: visEnd; }
+  @keyframes visEnd { 0% { opacity:0 } 6% { opacity:1 } 100% { opacity:1 } }
+
+  .rise { animation: rise .45s cubic-bezier(.2,.8,.2,1) var(--at) both; }
+  @keyframes rise { 0% { opacity:0; transform:translateY(50px) } 100% { opacity:1; transform:none } }
+  .pop { animation: pop .4s var(--spring) var(--at) both; }
+  @keyframes pop { 0% { opacity:0; transform:scale(.3) rotate(var(--r,0deg)) } 100% { opacity:1; transform:rotate(var(--r,0deg)) } }
+  .slam { animation: slam .26s cubic-bezier(.3,1.4,.5,1) var(--at) both; }
+  @keyframes slam { 0% { opacity:0; transform:scale(2.6) rotate(calc(var(--r,0deg) * 4)) } 100% { opacity:1; transform:rotate(var(--r,0deg)) } }
+  .fall { animation: fall .38s cubic-bezier(.5,0,.75,0) var(--at) both, bounce .3s var(--spring) calc(var(--at) + .38s) both; }
+  @keyframes fall { 0% { opacity:1; transform:translateY(-1100px) rotate(-30deg) } 100% { opacity:1; transform:translateY(0) rotate(var(--r,0deg)) } }
+  @keyframes bounce { 0% { transform:translateY(0) scaleY(.82) rotate(var(--r,0deg)) } 50% { transform:translateY(-40px) rotate(var(--r,0deg)) } 100% { transform:translateY(0) rotate(var(--r,0deg)) } }
+
+  .tile { display:inline-grid; place-items:center; font:800 230px/1 var(--display); letter-spacing:-.04em; padding:.06em .14em .1em;
+    clip-path:polygon(0% 3%, 9% 0%, 31% 2%, 56% 0%, 79% 3%, 100% 0%, 98% 31%, 100% 63%, 97% 100%, 71% 97%, 46% 100%, 21% 98%, 2% 100%, 0% 69%, 2% 38%); }
+  .tiles { display:flex; gap:10px; filter: drop-shadow(6px 9px 0 rgba(21,23,28,.22)); }
+  .t-ink { background:var(--ink); color:var(--paper) } .t-paper { background:var(--card) } .t-kraft { background:var(--kraft) } .t-acc { background:var(--accent); fill:var(--card) }
+  .t-acc svg { height:.8em; width:auto; }
+  .big { font:800 128px/1 var(--display); letter-spacing:-.035em; }
+  .mid { font:800 88px/1.05 var(--display); letter-spacing:-.03em; }
+  .lab { font:500 36px var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+  em { font-style:normal; background:var(--accent); color:var(--card); padding:0 18px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+
+  /* boring intro */
+  .boring { background:var(--paper2); filter:saturate(.2); }
+  .boring .big { color:#55534F; }
+  .days { display:grid; gap:26px; margin-top:80px; width:100%; }
+  .day { display:flex; justify-content:space-between; align-items:center; background:#EDEAE3; border:4px dashed #8A877F; padding:30px 40px; font:700 54px var(--body); color:#55534F; }
+  .day b { font:800 56px var(--display); }
+  .clock { width:220px; height:220px; border-radius:50%; border:10px solid #55534F; position:relative; margin-bottom:60px; }
+  .clock::after { content:""; position:absolute; left:50%; top:50%; width:16px; height:16px; margin:-8px; border-radius:50%; background:#55534F; }
+  .hand { position:absolute; left:50%; bottom:50%; width:10px; margin-left:-5px; background:#55534F; transform-origin:50% 100%; border-radius:6px; }
+  .h1 { height:62px; animation: spin 4.5s linear both; } .h2 { height:88px; width:6px; margin-left:-3px; animation: spin .75s linear 6 both; }
+  @keyframes spin { from { transform:rotate(0) } to { transform:rotate(360deg) } }
+  .yawn { font:500 32px var(--mono); color:#8A877F; margin-top:50px; }
+
+  .flash { position:absolute; inset:0; background:#fff; z-index:55; opacity:0; animation: flash .22s ease-out 5s forwards; }
+  @keyframes flash { 0% { opacity:.95 } 100% { opacity:0 } }
+
+  /* checklist */
+  .check { display:grid; gap:34px; width:100%; margin-top:70px; }
+  .row { display:flex; align-items:center; gap:30px; background:var(--card); border:5px solid var(--ink); box-shadow:12px 12px 0 var(--ink); padding:30px 40px; text-align:left; }
+  .row .d { font:500 34px var(--mono); color:var(--muted); width:170px; }
+  .row .w { font:800 62px var(--display); flex:1; }
+  .row .ok { width:96px; height:96px; display:grid; place-items:center; background:var(--accent); color:var(--card); font:800 60px var(--display); border:5px solid var(--ink); transform:rotate(-8deg); }
+  .row.live { background:var(--ink); color:var(--paper); box-shadow:12px 12px 0 var(--accent); }
+  .row.live .w { color:var(--volt); }
+
+  /* word flash */
+  .word { font:800 170px/.95 var(--display); letter-spacing:-.045em; }
+  .wf { animation: slam .22s cubic-bezier(.3,1.4,.5,1) var(--at) both; }
+
+  /* newton */
+  .apple { width:230px; height:230px; border-radius:50%; background:var(--accent); position:relative; box-shadow: inset -22px -22px 0 rgba(0,0,0,.15); margin-bottom:70px; }
+  .apple::before { content:""; position:absolute; width:20px; height:60px; background:var(--ink); left:104px; top:-46px; transform:rotate(10deg); }
+  .apple::after { content:""; position:absolute; width:76px; height:40px; background:#6E8B3D; left:122px; top:-40px; border-radius:0 60% 0 60%; transform:rotate(-12deg); }
+  .eq { font:800 110px/1.05 var(--display); letter-spacing:-.03em; }
+
+  .coins { display:flex; margin:40px 0 70px; }
+  .coin { width:260px; height:260px; border-radius:50%; display:grid; place-items:center; font:800 84px var(--display); border:7px solid var(--ink); margin:0 -22px; box-shadow: inset 0 -16px 0 rgba(0,0,0,.15); }
+
+  .contact { font:700 56px var(--body); margin-top:70px; }
+  .contact b { display:block; font:800 92px var(--display); letter-spacing:-.02em; margin-top:10px; }
+  .url { font:500 38px var(--mono); margin-top:40px; background:var(--ink); color:var(--paper); padding:16px 28px; }
+  .bar { position:absolute; left:0; right:0; bottom:0; height:22px; background:var(--accent); transform-origin:left; animation: bar 21.5s linear both; z-index:61; }
+  @keyframes bar { from { transform:scaleX(0) } to { transform:scaleX(1) } }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><g id="spike"><g transform="translate(9 0) skewX(-10)"><path d="M34 4 H66 L54 68 H46 Z"/><rect x="40" y="76" width="20" height="20"/></g></g></defs></svg>
+<div id="cam">
+
+<!-- 1. boring intro 0-4.5 -->
+<section class="scene boring" style="--at:0s; --dur:4.95s">
+  <div class="clock rise" style="--at:0s"><span class="hand h1"></span><span class="hand h2"></span></div>
+  <p class="lab rise" style="--at:.05s">POV:</p>
+  <p class="big rise" style="--at:.35s; margin-top:20px; font-size:104px">you asked an agency for a website</p>
+  <div class="days">
+    <div class="day rise" style="--at:1.5s"><span>Day 1</span><b>“kal pakka”</b></div>
+    <div class="day rise" style="--at:2.5s"><span>Day 7</span><b>“kal pakka”</b></div>
+    <div class="day rise" style="--at:3.5s"><span>Day 30</span><b>“kal pakka” 🙃</b></div>
+  </div>
+  <p class="yawn rise" style="--at:3.9s">*yawn*</p>
+</section>
+
+<!-- 2. drop 5.0-7.0 -->
+<section class="scene" style="--at:4.98s; --dur:2.0s">
+  <p class="lab pop" style="--at:5.0s; margin-bottom:60px">Enter</p>
+  <div class="tiles">
+    <span class="tile t-ink slam"   style="--at:5.00s; --r:-6deg">V</span>
+    <span class="tile t-paper slam" style="--at:5.25s; --r:4deg">S</span>
+    <span class="tile t-kraft slam" style="--at:5.50s; --r:-3deg">p</span>
+    <span class="tile t-acc slam"   style="--at:5.75s; --r:8deg"><svg viewBox="28 0 50 100"><use href="#spike"/></svg></span>
+    <span class="tile t-paper slam" style="--at:6.00s; --r:-4deg">k</span>
+  </div>
+  <p class="big rise" style="--at:6.3s; margin-top:90px; font-size:96px">Built fast. <em>Built properly.</em></p>
+</section>
+
+<!-- 3. checklist 7.0-11.0 -->
+<section class="scene" style="--at:7.0s; --dur:4.0s">
+  <p class="mid rise" style="--at:7.0s">Same website. <em>Our way.</em></p>
+  <div class="check">
+    <div class="row pop" style="--at:7.5s; --r:-1deg"><span class="d">Day 1</span><span class="w">Brief + fixed quote</span><span class="ok">✓</span></div>
+    <div class="row pop" style="--at:8.5s; --r:1deg"><span class="d">Day 3</span><span class="w">Working link</span><span class="ok">✓</span></div>
+    <div class="row live pop" style="--at:9.5s; --r:-1.5deg"><span class="d" style="color:#A9A7A0">Day 5</span><span class="w">LIVE</span><span class="ok">✓</span></div>
+  </div>
+  <p class="lab rise" style="--at:10.2s; margin-top:60px; color:var(--ink)">Fixed quote · Fixed date</p>
+</section>
+
+<!-- 4. word flash 11.0-14.5, one per beat -->
+<section class="scene cut" style="--at:11.0s; --dur:.5s; background:var(--accent)"><p class="word wf" style="--at:11.0s; color:var(--card)">WEBSITES</p></section>
+<section class="scene cut" style="--at:11.5s; --dur:.5s; background:var(--ink)"><p class="word wf" style="--at:11.5s; color:var(--volt)">ONLINE STORES</p></section>
+<section class="scene cut" style="--at:12.0s; --dur:.5s; background:var(--kraft)"><p class="word wf" style="--at:12.0s">WEB APPS</p></section>
+<section class="scene cut" style="--at:12.5s; --dur:.5s; background:var(--volt)"><p class="word wf" style="--at:12.5s">MOBILE APPS</p></section>
+<section class="scene cut" style="--at:13.0s; --dur:.5s; background:var(--ink)"><p class="word wf" style="--at:13.0s; color:var(--accent); font-size:260px">AI</p></section>
+<section class="scene cut" style="--at:13.5s; --dur:.5s; background:var(--card)"><p class="word wf" style="--at:13.5s">DATA &amp; DASHBOARDS</p></section>
+<section class="scene cut" style="--at:14.0s; --dur:.5s; background:var(--accent)"><p class="word wf" style="--at:14.0s; color:var(--card)">YOUR CODEBASE</p></section>
+
+<!-- 5. newton 14.5-17.0 -->
+<section class="scene" style="--at:14.5s; --dur:2.5s">
+  <div class="apple fall" style="--at:14.47s; --r:-10deg"></div>
+  <p class="eq pop" style="--at:15.0s">F = m ×</p>
+  <p class="eq pop" style="--at:15.5s; margin-top:20px; font-size:92px"><em>“bas ek chhota sa change”</em></p>
+  <p class="lab rise" style="--at:16.2s; margin-top:60px; color:var(--ink)">We price every change upfront</p>
+</section>
+
+<!-- 6. partners 17.0-19.0 -->
+<section class="scene" style="--at:17.0s; --dur:2.0s">
+  <p class="lab rise" style="--at:16.95s">Freelancers · Agencies · Dev teams</p>
+  <div class="coins">
+    <span class="coin fall" style="--at:16.62s; --r:-8deg; background:var(--accent); color:var(--card)">10%</span>
+    <span class="coin fall" style="--at:17.12s; --r:6deg; background:var(--volt)">15%</span>
+    <span class="coin fall" style="--at:17.62s; --r:-4deg; background:var(--kraft)">+5%</span>
+  </div>
+  <p class="mid rise" style="--at:18.2s"><em>Become a partner.</em></p>
+</section>
+
+<!-- 7. end 19.0-21.5 -->
+<section class="scene last" style="--at:19.0s; --dur:2.5s">
+  <div class="tiles" style="transform:scale(.82)">
+    <span class="tile t-ink slam"   style="--at:19.00s; --r:-6deg">V</span>
+    <span class="tile t-paper slam" style="--at:19.08s; --r:4deg">S</span>
+    <span class="tile t-kraft slam" style="--at:19.16s; --r:-3deg">p</span>
+    <span class="tile t-acc slam"   style="--at:19.24s; --r:8deg"><svg viewBox="28 0 50 100"><use href="#spike"/></svg></span>
+    <span class="tile t-paper slam" style="--at:19.32s; --r:-4deg">k</span>
+  </div>
+  <p class="lab rise" style="--at:19.5s; margin-top:50px; color:var(--ink)">Pune · Websites · Apps · Software</p>
+  <p class="contact rise" style="--at:19.7s">WhatsApp us<b>+91 90750 18192</b></p>
+  <p class="url rise" style="--at:20.0s">vsp-k-website.vercel.app</p>
+</section>
+
+<div class="flash"></div>
+</div>
+<div class="grain"></div>
+<div class="bar"></div>
+</body>
+</html>
