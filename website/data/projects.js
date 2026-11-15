@@ -5,21 +5,38 @@
   Rules (docs/00-quality-framework.md §7):
   - Real client work only with the client's permission.
   - Demo or practice builds must use kind: "Concept".
-  - Screenshots must come from the real, working build.
+  - Screenshots must come from the real, working build. With no screenshot,
+    the card shows a plain browser frame with the domain name instead.
 
-  Example:
-  {
-    title: "Online bakery store",
-    client: "Client name (or 'A Nashik bakery' if they prefer to stay anonymous)",
-    kind: "Client project",              // or "Concept"
-    field: "E-commerce",
-    year: 2026,
-    summary: "One or two plain sentences: the problem and what we built.",
-    result: "Optional: one real, checkable result.",
-    tags: ["Next.js", "Razorpay", "Admin panel"],
-    image: "assets/work/bakery-store.webp", // put screenshots in website/assets/work/
-    link: "https://example.com"            // optional live link
-  }
+  Fields: title, client, kind ("Client project" | "Concept"), field, year,
+  status (optional, e.g. "Launching soon"), summary, result (optional, real only),
+  tags, image (optional, path under website/assets/work/), domain (shown in the frame),
+  link (optional live URL).
 */
 window.VSPIK_PROJECTS = [
+  {
+    title: "The Mobile Factory",
+    client: "Refurbished smartphone seller",
+    kind: "Client project",
+    field: "E-commerce",
+    year: 2026,
+    status: "Launching soon",
+    summary: "An online store and full back office for refurbished phones. Buyers see each phone's grade, battery health and warranty; staff track every device by IMEI from purchase to after-sales.",
+    tags: ["Next.js", "NestJS", "PostgreSQL", "Razorpay", "Shiprocket", "GST invoices"],
+    domain: "mobilesfactory.in",
+    link: "https://mobilesfactory.in"
+  },
+  {
+    title: "Hotel Balaji Holiday Home",
+    client: "Hotel in Poladpur, Raigad",
+    kind: "Client project",
+    field: "Hospitality",
+    year: 2026,
+    status: "Live",
+    summary: "Website for a hotel on NH66 in Poladpur: room search by dates and guests, rooms and suites, offers, events and a guest login, with direct contact for enquiries.",
+    tags: ["Hotel website", "Room search", "Events", "Guest login"],
+    image: "assets/work/balaji-holiday-home.png",
+    domain: "balajihoildayhome.com",
+    link: "https://balajihoildayhome.com/"
+  }
 ];

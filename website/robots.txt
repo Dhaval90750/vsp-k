@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vsp-k.vercel.app/sitemap.xml
+Sitemap: https://vsp-k-website.vercel.app/sitemap.xml

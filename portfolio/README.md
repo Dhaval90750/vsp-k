@@ -21,4 +21,5 @@ Case studies of real, delivered work, and clearly labelled concept builds.
 
 | Project | Kind | Field | Status |
 |---|---|---|---|
-| *(none yet)* | | | |
+| [The Mobile Factory](https://mobilesfactory.in) | Client project | E-commerce (refurbished phones) | Launching soon |
+| [Hotel Balaji Holiday Home](https://balajihoildayhome.com/) | Client project | Hospitality (hotel, Poladpur) | Live |

@@ -17,7 +17,7 @@
 
 ---
 
-VSp!k is a small studio that ships websites, web apps, e-commerce stores, mobile apps, AI features, data analytics and automation for businesses in any field.
+VSp!k is a small studio that ships websites, web apps, e-commerce stores, mobile apps, AI features, data analytics and automation for businesses in any field, and contributes to existing software. Based in Pune, working across India.
 
 Every project follows the [quality framework](docs/00-quality-framework.md). Nothing is shown to a client until it passes.
 
@@ -49,11 +49,11 @@ Every project follows the [quality framework](docs/00-quality-framework.md). Not
 |---|---|
 | Quality framework | Done (v1.0) |
 | Brand and logo | Done: cut-paper wordmark |
-| Studio website | Built, Vercel-ready |
-| Social posts | Batch 01 (12 images) and batch 02 (5 images) ready, with captions |
+| Studio website | Live at [vsp-k-website.vercel.app](https://vsp-k-website.vercel.app) |
+| Social posts | Reel 01 (15 s video), batch 01 (12 images) and batch 02 (5 images), with captions |
 | Partner programme | Terms written in [docs/02-partner-programme.md](docs/02-partner-programme.md) |
-| Portfolio | Waiting for the first case studies |
+| Portfolio | The Mobile Factory (launching soon), Hotel Balaji Holiday Home (live) |
 
 ## Contact
 
-📱 [+91 90750 18192](tel:+919075018192) · 💬 [WhatsApp](https://wa.me/919075018192) · ✉️ [thawaredhaval24@gmail.com](mailto:thawaredhaval24@gmail.com) · 🐙 [GitHub](https://github.com/Dhaval90750)
+📱 [+91 90750 18192](tel:+919075018192) · 💬 [WhatsApp](https://wa.me/919075018192) · ✉️ [thawaredhaval24@gmail.com](mailto:thawaredhaval24@gmail.com) · 🐙 [GitHub](https://github.com/Dhaval90750) · 🌐 [Website](https://vsp-k-website.vercel.app)

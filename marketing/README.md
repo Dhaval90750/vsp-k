@@ -4,6 +4,7 @@
 
 | What | Where |
 |---|---|
+| Reel (15 s video, 1080 × 1920) + cover | [`reels/reel-01.mp4`](reels/reel-01.mp4), [`reels/reel-01-cover.jpg`](reels/reel-01-cover.jpg) (source: [reel-01.html](reels/reel-01.html)) |
 | Ready-to-post images (1080 × 1350) | [`instagram/batch-01/`](instagram/batch-01/), [`instagram/batch-02/`](instagram/batch-02/) |
 | Captions for Instagram and LinkedIn, plus the suggested posting order | [captions.md](captions.md) |
 | LinkedIn notes | [`linkedin/`](linkedin/) |

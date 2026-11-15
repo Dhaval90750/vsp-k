@@ -234,15 +234,41 @@ Hashtags are a starting set. Keep 5–8 per Instagram post and 3 on LinkedIn.
 
 ---
 
+## Reel 01: "Built fast. Built properly." (reels/reel-01.mp4, 15 s, 1080 × 1920)
+
+Add a trending audio in the Instagram app before posting; the video has no sound so any track fits. Cover image: reels/reel-01-cover.jpg.
+
+**Instagram**
+> Website kab tak? 🤔
+> Usual answer: "kal pakka".
+> Our answer: Friday. In writing. ✅
+>
+> Websites · E-commerce · Apps · AI · Data analytics · Automation · Software contribution
+> Pune-based, working across India. Partners earn up to 15%.
+>
+> 📱 WhatsApp +91 90750 18192
+>
+> #puneStartups #webdevelopmentpune #punebusiness #websitedesign #reels #smallbusinessindia
+
+**LinkedIn**
+> 15 seconds on how we work: a fixed quote, a written date, and working software you can click every few days. Based in Pune, working across India.
+>
+> We also run a partner programme for freelancers, agencies and dev teams: refer a client or build with us, and earn up to 15% plus 5% on renewals.
+>
+> #pune #softwaredevelopment #webdevelopment
+
+---
+
 ## Post order (suggested)
 
-1. Newton carousel: strong first impression
-2. Mere bhatije
-3. Mitochondria
-4. Bas ek chhota sa change carousel
-5. Data analytics (four versions of the truth)
-6. Kal pakka
-7. Activation energy
-8. Maths limit
-9. Opportunity cost
-10. Partner programme
+1. Reel 01: first post, pin it to the top of the profile
+2. Newton carousel: strong first impression
+3. Mere bhatije
+4. Mitochondria
+5. Bas ek chhota sa change carousel
+6. Data analytics (four versions of the truth)
+7. Kal pakka
+8. Activation energy
+9. Maths limit
+10. Opportunity cost
+11. Partner programme

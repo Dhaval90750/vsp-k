@@ -151,23 +151,67 @@
       el.className = "proj reveal tilt";
       el.style.setProperty("--d", (i % 3) * 0.09 + "s");
       if (p.link) { el.href = p.link; el.target = "_blank"; el.rel = "noopener"; }
-      el.innerHTML =
-        (p.image ? '<div class="proj-img"><img src="' + esc(p.image) + '" alt="' + esc(p.title) + ' screenshot" loading="lazy"></div>' : "") +
+      var visual = p.image
+        ? '<div class="proj-img"><img src="' + esc(p.image) + '" alt="' + esc(p.title) + ' screenshot" loading="lazy"></div>'
+        : '<div class="proj-frame" aria-hidden="true"><div class="pf-bar"><i></i><i></i><i></i><span>' + esc(p.domain || "") + '</span></div>' +
+          '<div class="pf-body"><span class="pf-title">' + esc(p.title) + '</span><span class="pf-field">' + esc(p.field || "") + '</span></div></div>';
+      el.innerHTML = visual +
         '<div class="proj-body">' +
           '<div class="proj-meta"><span class="chip ' + (concept ? "kind-concept" : "kind-client") + '">' + esc(p.kind || "Client project") + "</span>" +
           (p.field ? '<span class="chip">' + esc(p.field) + "</span>" : "") +
+          (p.status ? '<span class="chip chip-status">' + esc(p.status) + "</span>" : "") +
           (p.year ? '<span class="chip">' + esc(p.year) + "</span>" : "") + "</div>" +
           "<h3>" + esc(p.title) + "</h3>" +
           (p.client ? '<p class="client">' + esc(p.client) + "</p>" : "") +
           (p.summary ? "<p>" + esc(p.summary) + "</p>" : "") +
           (p.result ? '<p class="result">' + esc(p.result) + "</p>" : "") +
           (p.tags && p.tags.length ? '<p class="tags">' + p.tags.map(esc).join(" · ") + "</p>" : "") +
+          (p.link ? '<span class="proj-go">Visit ' + esc(p.domain || "site") + ' →</span>' : "") +
         "</div>";
       grid.appendChild(el);
       bindTilt(el);
       if (io) io.observe(el); else el.classList.add("in");
     });
   }
+
+  /* ---------- random jokes ---------- */
+  var JOKES = [
+    "Newton's 1st law of projects: a project at rest stays at rest until someone says “urgent”.",
+    "F = m × “bas ek chhota sa change”. Where m is the whole project.",
+    "Mitochondria is the powerhouse of the cell. Your WhatsApp button is the powerhouse of your website.",
+    "lim (days → ∞) of “kal pakka” = still kal.",
+    "Activation energy: the effort needed to finally start the website you planned in 2019.",
+    "Our websites have excellent bonding. Covalent with your customers, ionic with your competitors.",
+    "Schrödinger's website: live and broken at the same time, until someone opens it on a ₹8,000 phone.",
+    "sales_final_v2_FINAL(1).xlsx walks into a bar. The bartender asks, “Which version are you?”",
+    "A website without a phone number is like chai without sugar. Technically fine. Nobody's happy.",
+    "“Logo thoda bada karo.” Bigger. Bigger. Okay, now it's a billboard.",
+    "There are 10 kinds of clients: those who read the quote, and those who say “bas thoda sa”.",
+    "Entropy: your WhatsApp catalogue tends towards maximum disorder.",
+    "Opportunity cost is the customer who searched for you and found the shop next door.",
+    "Our code is like Pune weather: you know exactly what you're getting. Okay, bad example.",
+    "Relativity: “thoda time lagega” is 2 days for us and 2 months somewhere else.",
+    "We tried to make a joke about UDP. Not sure you got it.",
+    "Friction: every extra form field is a speed breaker on the way to your inbox.",
+    "Photosynthesis turns light into energy. We turn chai into working software.",
+    "Why did the developer go broke? He used up all his cache.",
+    "The best time to build a website was 10 years ago. The second best time is this week."
+  ];
+  var pool = JOKES.slice().sort(function () { return Math.random() - 0.5; });
+  var pi = 0;
+  function nextJoke() { var t = pool[pi % pool.length]; pi++; return t; }
+  document.querySelectorAll("[data-joke]").forEach(function (n, i) {
+    n.innerHTML = '<span class="joke-label">Random joke</span><span class="joke-text"></span><button type="button" class="joke-next">Another one ↻</button>';
+    n.style.setProperty("--jr", (i % 2 ? 2.5 : -2.5) + "deg");
+    var txt = n.querySelector(".joke-text");
+    txt.textContent = nextJoke();
+    n.querySelector(".joke-next").addEventListener("click", function () {
+      n.classList.remove("pop"); void n.offsetWidth; n.classList.add("pop");
+      txt.textContent = nextJoke();
+    });
+  });
+  var fj = document.querySelector("[data-joke-text]");
+  if (fj) fj.textContent = nextJoke();
 
   /* ---------- contact composer → WhatsApp / email ---------- */
   var form = document.getElementById("composer");
