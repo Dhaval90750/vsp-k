@@ -11,6 +11,10 @@
 | LinkedIn notes | [`linkedin/`](linkedin/) |
 | Source files to edit posts | [posts-batch-01.html](posts-batch-01.html), [posts-batch-02.html](posts-batch-02.html) |
 
+## On the website
+
+Every reel and post here is also shown in the website's "Feed" section. When you add a new one, add it to [`website/data/feed.js`](../website/data/feed.js) too (steps in the [website README](../website/README.md)).
+
 ## Batches
 
 | Batch | Posts |

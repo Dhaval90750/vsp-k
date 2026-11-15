@@ -139,6 +139,7 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#how">How we work</a></li>
         <li><a href="#work">Work</a></li>
+        <li><a href="#feed">Feed</a></li>
         <li><a href="#partners">Partners</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li class="menu-cta"><a class="btn btn-accent btn-sm" href="#partners">Become a partner</a></li>
@@ -431,11 +432,44 @@
     </div>
   </section>
 
+  <!-- ================= FEED (reels + posts, built from data/feed.js) ================= -->
+  <section class="section feed" id="feed" aria-labelledby="feed-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="kicker">05 · From our feed</p>
+        <h2 id="feed-title">Reels, posts and the occasional physics joke.</h2>
+        <p class="sub">What we post on Instagram and LinkedIn. Mostly jokes about deadlines, with a point about how we work.</p>
+      </div>
+
+      <div class="feed-tabs reveal" role="tablist" aria-label="Filter the feed">
+        <button type="button" role="tab" aria-selected="true" data-filter="all">All</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="reels">Reels</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="Funny">Funny</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="Subjects">Subjects series</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="Partners">Partners</button>
+      </div>
+
+      <div class="feed-grid" id="feed-grid"></div>
+
+      <div class="feed-cta reveal">
+        <p>Liked a post? Send it to someone who's still waiting for “kal”.</p>
+        <a class="btn btn-ink" data-wa="Hi VSp!k, I saw your posts and want to talk about a project." href="https://wa.me/919075018192" target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>Saw a post? Say hi</a>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Post viewer">
+    <button type="button" class="lb-close" aria-label="Close">✕</button>
+    <button type="button" class="lb-nav lb-prev" aria-label="Previous image">‹</button>
+    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+    <button type="button" class="lb-nav lb-next" aria-label="Next image">›</button>
+  </dialog>
+
   <!-- ================= PARTNERS ================= -->
   <section class="section partners" id="partners" aria-labelledby="partners-title">
     <div class="wrap">
       <div class="head reveal">
-        <p class="kicker">05 · Partners &amp; software partners</p>
+        <p class="kicker">06 · Partners &amp; software partners</p>
         <h2 id="partners-title">Become a partner. Refer clients or build software with us.</h2>
         <p class="sub">For freelancers, designers, marketers, CAs, consultants, agencies, dev teams and happy clients.</p>
         <aside class="joke" data-joke aria-label="A joke"></aside>
@@ -485,7 +519,7 @@
   <section class="section" id="faq" aria-labelledby="faq-title">
     <div class="wrap narrow">
       <div class="head reveal">
-        <p class="kicker">06 · Questions</p>
+        <p class="kicker">07 · Questions</p>
         <h2 id="faq-title">Things people ask before they WhatsApp us.</h2>
         <aside class="joke" data-joke aria-label="A joke"></aside>
       </div>
@@ -506,7 +540,7 @@
   <section class="section contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap contact-grid">
       <div class="contact-copy reveal">
-        <p class="kicker">07 · Start</p>
+        <p class="kicker">08 · Start</p>
         <h2 id="contact-title">Tell us what you need. Get a fixed quote in 24 hours.</h2>
         <p class="sub">Pick a topic, add a few details, and your message opens in WhatsApp, ready to send. Or call or email if you prefer.</p>
         <ul class="direct">
@@ -562,7 +596,7 @@
       <p class="foot-joke"><span>Joke of the visit:</span> <span data-joke-text></span></p>
     </div>
     <ul class="foot-links">
-      <li><a href="#services">Services</a></li><li><a href="#how">How we work</a></li><li><a href="#work">Work</a></li><li><a href="#partners">Partners</a></li><li><a href="#faq">FAQ</a></li>
+      <li><a href="#services">Services</a></li><li><a href="#how">How we work</a></li><li><a href="#work">Work</a></li><li><a href="#feed">Feed</a></li><li><a href="#partners">Partners</a></li><li><a href="#faq">FAQ</a></li>
     </ul>
     <ul class="foot-links">
       <li><a href="tel:+919075018192">+91 90750 18192</a></li>
@@ -578,6 +612,7 @@
 
 <script src="data/site.js"></script>
 <script src="data/projects.js"></script>
+<script src="data/feed.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

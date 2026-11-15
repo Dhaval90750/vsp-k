@@ -10,10 +10,16 @@ A static site (HTML, CSS and a little JavaScript). There is no build step, so it
 |---|---|
 | Phone, email, WhatsApp default message, partner commission numbers | `data/site.js` |
 | Projects in the "Work" section | `data/projects.js` (screenshots go in `assets/work/`) |
+| Reels and posts in the "Feed" section | `data/feed.js` (files go in `assets/feed/`) |
 | Text, services, FAQ | `index.html` |
 | Colours, spacing, animation | `css/style.css` (tokens at the top) |
 
 The "Work" section builds itself from `data/projects.js`. While that list is empty, it shows an honest "case studies are being written up" note.
+
+The "Feed" section builds itself from `data/feed.js`. To add a new post or reel:
+
+1. Copy the file into `assets/feed/`. For posts, use a 720 px wide JPEG copy of the 1080 × 1350 PNG from `marketing/instagram/` (about 60 KB instead of 500 KB). Reels can be copied as they are, plus their cover JPEG.
+2. Add an entry at the top of `reels` or `posts` in `data/feed.js`, with the Instagram caption from `marketing/captions.md`. A post with several images becomes a swipeable carousel.
 
 ## Run locally
 
