@@ -26,7 +26,7 @@ Every project follows the [quality framework](docs/00-quality-framework.md). Not
 | Folder | What's inside | Start here |
 |---|---|---|
 | [`website/`](website/) | The studio website (static, deployed on Vercel) | [website/README.md](website/README.md) |
-| [`docs/`](docs/) | How we work: quality framework, brand direction, partner programme, delivery process | [docs/README.md](docs/README.md) |
+| [`docs/`](docs/) | How we work: quality framework, brand direction, partner programme, delivery process, design system and UI/UX guide | [docs/README.md](docs/README.md) |
 | [`brand/`](brand/) | Logo files, brand boards, colours and type | [brand/README.md](brand/README.md) |
 | [`marketing/`](marketing/) | Instagram and LinkedIn posts, captions and the source files they're made from | [marketing/README.md](marketing/README.md) |
 | [`portfolio/`](portfolio/) | Case studies of delivered work, and labelled concept builds | [portfolio/README.md](portfolio/README.md) |
