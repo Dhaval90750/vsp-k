@@ -1,0 +1,133 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://vsp-k-website.vercel.app/#org",
+      "name": "VSp!k",
+      "alternateName": "VSpik",
+      "url": "https://vsp-k-website.vercel.app/",
+      "logo": "https://vsp-k-website.vercel.app/assets/vspik-logo.png",
+      "email": "thawaredhaval24@gmail.com",
+      "telephone": "+91-9075018192",
+      "sameAs": [
+        "https://github.com/Dhaval90750"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+91-9075018192",
+          "contactType": "sales",
+          "areaServed": "IN",
+          "availableLanguage": [
+            "English",
+            "Hindi",
+            "Marathi"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://vsp-k-website.vercel.app/#service",
+      "name": "VSp!k",
+      "url": "https://vsp-k-website.vercel.app/",
+      "image": "https://vsp-k-website.vercel.app/assets/og-image.png",
+      "description": "Pune-based website, app and software development studio. Fixed quote, fixed date, working software to check every few days.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "addressCountry": "IN"
+      },
+      "priceRange": "Quote-based",
+      "telephone": "+91-9075018192",
+      "email": "thawaredhaval24@gmail.com",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Pune"
+        },
+        {
+          "@type": "Country",
+          "name": "India"
+        }
+      ],
+      "parentOrganization": {
+        "@id": "https://vsp-k-website.vercel.app/#org"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business website development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "E-commerce store development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web app and dashboard development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile app development (Android and iOS)"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI chatbot and AI feature development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business process automation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Data analytics and dashboards"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Software contribution and open-source development"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://vsp-k-website.vercel.app/#website",
+      "url": "https://vsp-k-website.vercel.app/",
+      "name": "VSp!k",
+      "inLanguage": "en-IN",
+      "publisher": {
+        "@id": "https://vsp-k-website.vercel.app/#org"
+      }
+    }
+  ]
+}

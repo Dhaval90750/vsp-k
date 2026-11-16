@@ -31,12 +31,12 @@
   var nav = document.querySelector(".nav");
   var btn = document.querySelector(".menu-btn");
   var menu = document.getElementById("menu");
-  function closeMenu() { menu.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
-  btn.addEventListener("click", function () {
+  function closeMenu() { if (!menu) return; menu.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); }
+  if (btn && menu) btn.addEventListener("click", function () {
     var open = menu.classList.toggle("open");
     btn.setAttribute("aria-expanded", open ? "true" : "false");
   });
-  menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
+  if (menu) menu.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeMenu); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
 
   /* ---------- scroll progress ---------- */
@@ -44,7 +44,7 @@
   var ticking = false;
   function onScroll() {
     var max = doc.scrollHeight - innerHeight;
-    bar.style.transform = "scaleX(" + (max > 0 ? scrollY / max : 0) + ")";
+    if (bar) bar.style.transform = "scaleX(" + (max > 0 ? scrollY / max : 0) + ")";
     nav.classList.toggle("scrolled", scrollY > 8);
     ticking = false;
   }
@@ -87,7 +87,7 @@
   var tiles = document.getElementById("tiles");
   var bits = document.querySelectorAll(".bit");
   var hero = document.querySelector(".hero");
-  if (finePointer && !reduce) {
+  if (hero && tiles && finePointer && !reduce) {
     hero.addEventListener("pointermove", function (e) {
       var px = e.clientX / innerWidth - 0.5;
       var py = e.clientY / innerHeight - 0.5;
@@ -105,7 +105,7 @@
   }
 
   /* ---------- hero: drag a tile, it springs back ---------- */
-  tiles.querySelectorAll(".tile").forEach(function (t) {
+  if (tiles) tiles.querySelectorAll(".tile").forEach(function (t) {
     var sx = 0, sy = 0, dragging = false;
     t.addEventListener("animationend", function () { t.style.animation = "none"; });
     t.addEventListener("pointerdown", function (e) {
@@ -141,10 +141,13 @@
   var grid = document.getElementById("work-grid");
   var empty = document.getElementById("work-empty");
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
-  if (!projects.length) {
-    empty.hidden = false;
+  var limit = grid ? +(grid.getAttribute("data-limit") || 0) : 0;
+  if (!grid) {
+    /* no work section on this page */
+  } else if (!projects.length) {
+    if (empty) empty.hidden = false;
   } else {
-    projects.forEach(function (p, i) {
+    (limit ? projects.slice(0, limit) : projects).forEach(function (p, i) {
       var concept = String(p.kind || "").toLowerCase() === "concept";
       var tag = p.link ? "a" : "article";
       var el = document.createElement(tag);
@@ -389,6 +392,7 @@
 
   /* ---------- contact composer → WhatsApp / email ---------- */
   var form = document.getElementById("composer");
+  if (form) {
   var preview = document.getElementById("preview");
   var mailBtn = document.getElementById("mail-btn");
   function compose() {
@@ -417,4 +421,5 @@
     window.open(wa(compose()), "_blank", "noopener");
   });
   update();
+  }
 })();

@@ -20,9 +20,10 @@ window.VSPIK_PROJECTS = [
     kind: "Client project",
     field: "E-commerce",
     year: 2026,
-    status: "Launching soon",
-    summary: "An online store and full back office for refurbished phones. Buyers see each phone's grade, battery health and warranty; staff track every device by IMEI from purchase to after-sales.",
+    status: "Live",
+    summary: "Online store and full back office for refurbished smartphones across 10 brands. Every listing shows its minimum battery health, with a 6-month warranty, 7-day returns and free delivery across India. Staff track each device by IMEI from purchase to after-sales.",
     tags: ["Next.js", "NestJS", "PostgreSQL", "Razorpay", "Shiprocket", "GST invoices"],
+    image: "assets/work/mobilesfactory.png",
     domain: "mobilesfactory.in",
     link: "https://mobilesfactory.in"
   },

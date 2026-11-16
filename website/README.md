@@ -2,7 +2,26 @@
 
 # VSp!k website
 
-A static site (HTML, CSS and a little JavaScript). There is no build step, so it loads fast and deploys anywhere.
+A static site (HTML, CSS and a little JavaScript). Vercel serves it as-is, so there is no build step on deploy, and it loads fast.
+
+## Pages
+
+The site has 7 pages: Home (`/`), Services, Work, How we work (`/process`), Feed, Partners and Contact & FAQ.
+The page HTML is **generated**. Don't edit `website/*.html` directly.
+
+| Edit | Where |
+|---|---|
+| Shared head, menu and footer | `site-src/layout.html` |
+| A page's content, title and description | `site-src/pages/<page>.html` (JSON header at the top) |
+| Structured data for Google | `site-src/data/org.jsonld`, `site-src/data/faq.jsonld` |
+
+Then rebuild from the repo root. This also regenerates `sitemap.xml`:
+
+```
+node site-src/build.mjs
+```
+
+Commit the generated files along with your source changes.
 
 ## Edit content
 
@@ -11,7 +30,7 @@ A static site (HTML, CSS and a little JavaScript). There is no build step, so it
 | Phone, email, WhatsApp default message, partner commission numbers | `data/site.js` |
 | Projects in the "Work" section | `data/projects.js` (screenshots go in `assets/work/`) |
 | Reels and posts in the "Feed" section | `data/feed.js` (files go in `assets/feed/`) |
-| Text, services, FAQ | `index.html` |
+| Text, services, FAQ | `site-src/pages/*.html`, then rebuild |
 | Colours, spacing, animation | `css/style.css` (tokens at the top) |
 
 The "Work" section builds itself from `data/projects.js`. While that list is empty, it shows an honest "case studies are being written up" note.

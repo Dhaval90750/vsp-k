@@ -6,7 +6,7 @@ From the first message to handover. Every client project follows these steps (Qu
 
 | # | Step | What happens | Output | File |
 |---|---|---|---|---|
-| 1 | **Enquiry** | Client messages on WhatsApp, phone or email. Reply the same day | Short call booked | — |
+| 1 | **Enquiry** | Client messages on WhatsApp, phone or email. Reply the same day and send the requirements form | Form sent, short call booked | [`clients/_template/VSpik-Project-Requirements-Form.docx`](../clients/_template/VSpik-Project-Requirements-Form.docx) |
 | 2 | **Brief** | 15-minute call. Write down the goal, users, pages/features, content owner and deadline | Signed one-page brief | [`clients/_template/01-brief.md`](../clients/_template/01-brief.md) |
 | 3 | **Quote** | Fixed price, fixed date, scope, payment terms. Sent within 24 hours | Accepted quote | [`proposals/proposal-template.md`](../proposals/proposal-template.md) |
 | 4 | **Advance** | Advance payment received (suggested 50%) | Project starts | — |

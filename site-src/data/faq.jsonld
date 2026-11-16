@@ -1,0 +1,70 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How fast is “fast”, really?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A business website usually takes 3 to 7 days. Apps and stores take a few weeks. Your quote gives an exact date. Most delays come from waiting on content, so we tell you on day one what we need from you and when."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does it cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on what you need, so we don't publish one price that fits nobody. Tell us what you need and you'll get a fixed quote within 24 hours. The price you see is the price you pay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I own the website and the code?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The domain, hosting, code and every account are in your name. If you ever want to move to someone else, you can take everything with you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you work on software we already have?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We contribute to existing codebases: new features, bug fixes, code reviews, performance work and open-source contributions. We follow your repo's conventions and work through pull requests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who writes the text and provides photos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You know your business best, so you give us the facts. We turn them into clear, short text and help you plan simple photos with your phone. We never use fake reviews or stock photos pretending to be your team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Small fixes for issues we caused are free for the period stated in your quote. After that you can pick a monthly maintenance plan or pay per change, always quoted before we start."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is VSp!k based?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are based in Pune, Maharashtra. We meet Pune clients in person when it helps, and work with clients across India over WhatsApp, calls and shared links."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you work with clients outside my city?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Everything happens over WhatsApp, calls and shared links, so it doesn't matter where you are."
+      }
+    }
+  ]
+}

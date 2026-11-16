@@ -1,0 +1,44 @@
+<!--page
+{
+  "path": "/feed",
+  "nav": "feed",
+  "scripts": [
+    "site",
+    "feed"
+  ],
+  "title": "Feed | Reels, Posts and the Occasional Physics Joke | VSp!k",
+  "description": "VSp!k reels and posts from Instagram and LinkedIn: jokes about deadlines and 'kal pakka', with a point about how we work."
+}
+-->
+<!-- ================= FEED (reels + posts, built from data/feed.js) ================= -->
+  <section class="section feed" id="feed" aria-labelledby="feed-title">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="kicker">From our feed</p>
+        <h1 id="feed-title" class="page-h1">Reels, posts and the occasional physics joke.</h1>
+        <p class="sub">What we post on Instagram and LinkedIn. Mostly jokes about deadlines, with a point about how we work.</p>
+      </div>
+
+      <div class="feed-tabs reveal" role="tablist" aria-label="Filter the feed">
+        <button type="button" role="tab" aria-selected="true" data-filter="all">All</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="reels">Reels</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="Funny">Funny</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="Subjects">Subjects series</button>
+        <button type="button" role="tab" aria-selected="false" data-filter="Partners">Partners</button>
+      </div>
+
+      <div class="feed-grid" id="feed-grid"></div>
+
+      <div class="feed-cta reveal">
+        <p>Liked a post? Send it to someone who's still waiting for “kal”.</p>
+        <a class="btn btn-ink" data-wa="Hi VSp!k, I saw your posts and want to talk about a project." href="https://wa.me/919075018192" target="_blank" rel="noopener"><svg><use href="#i-chat"/></svg>Saw a post? Say hi</a>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Post viewer">
+    <button type="button" class="lb-close" aria-label="Close">✕</button>
+    <button type="button" class="lb-nav lb-prev" aria-label="Previous image">‹</button>
+    <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+    <button type="button" class="lb-nav lb-next" aria-label="Next image">›</button>
+  </dialog>

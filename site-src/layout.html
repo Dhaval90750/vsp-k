@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en-IN" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#F3F0E8">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">
+<meta name="keywords" content="website development Pune, web development company Pune, software company Pune, website development India, software development, e-commerce website, mobile app development, web app development, data analytics dashboard, AI chatbot, business automation, freelance developer India, software contributor, open source">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="VSp!k">
+<!-- SITE URL: change https://vsp-k-website.vercel.app everywhere in this file, sitemap.xml and robots.txt when a custom domain is connected -->
+<link rel="canonical" href="https://vsp-k-website.vercel.app{{path}}">
+<link rel="alternate" hreflang="en-in" href="https://vsp-k-website.vercel.app{{path}}">
+<meta property="og:site_name" content="VSp!k">
+<meta property="og:locale" content="en_IN">
+<meta name="geo.region" content="IN-MH">
+<meta name="geo.placename" content="Pune">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vsp-k-website.vercel.app{{path}}">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://vsp-k-website.vercel.app/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="VSp!k logo made of cut paper tiles">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{title}}">
+<meta name="twitter:description" content="{{description}}">
+<meta name="twitter:image" content="https://vsp-k-website.vercel.app/assets/og-image.png">
+<link rel="icon" type="image/svg+xml" href="/assets/vspik-icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/assets/vspik-logo.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+{{jsonld}}
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+<!-- shared SVG pieces -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="spike"><g transform="translate(9 0) skewX(-10)"><path d="M34 4 H66 L54 68 H46 Z"/><rect x="40" y="76" width="20" height="20"/></g></g>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M4 20l1.4-4.2A8 8 0 1 1 8.5 19z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M9 10.5c.5 1.6 1.9 3 3.5 3.5l1.2-1.1 2 .9-.4 1.6c-3.4.2-7-3.4-6.8-6.8l1.6-.4.9 2z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 6l9 7 9-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="square"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16" fill="none" stroke="currentColor" stroke-width="2.4"/></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="top">
+  <div class="wrap nav-in">
+    <a class="brand" href="/" aria-label="VSp!k home"><img src="/assets/vspik-logo.svg" alt="VSp!k" width="120" height="41"></a>
+    <nav aria-label="Main">
+      <button class="menu-btn" aria-expanded="false" aria-controls="menu"><span></span><span></span><span class="sr">Menu</span></button>
+      <ul id="menu">
+        <li><a href="/services"{{nav:services}}>Services</a></li>
+        <li><a href="/work"{{nav:work}}>Work</a></li>
+        <li><a href="/process"{{nav:process}}>How we work</a></li>
+        <li><a href="/feed"{{nav:feed}}>Feed</a></li>
+        <li class="menu-cta"><a class="btn btn-accent btn-sm" href="/partners"{{nav:partners}}>Become a partner</a></li>
+        <li class="menu-cta"><a class="btn btn-ink btn-sm" href="/contact"{{nav:contact}}>Start a project</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+{{content}}
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-grid">
+    <div>
+      <img src="/assets/vspik-logo-on-dark.svg" alt="VSp!k" width="150" height="51" class="foot-logo">
+      <p>Websites, apps and software. Built fast, built properly. Based in Pune, Maharashtra.</p>
+      <p class="foot-joke"><span>Joke of the visit:</span> <span data-joke-text></span></p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="/services">Services</a></li><li><a href="/work">Work</a></li><li><a href="/process">How we work</a></li><li><a href="/feed">Feed</a></li><li><a href="/partners">Partners</a></li><li><a href="/contact">Contact &amp; FAQ</a></li>
+    </ul>
+    <ul class="foot-links">
+      <li><a href="tel:+919075018192">+91 90750 18192</a></li>
+      <li><a href="mailto:thawaredhaval24@gmail.com">thawaredhaval24@gmail.com</a></li>
+      <li><a href="https://github.com/Dhaval90750" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a data-wa="Hi VSp!k, I'd like to talk about a project." href="https://wa.me/919075018192" target="_blank" rel="noopener">WhatsApp</a></li>
+    </ul>
+  </div>
+  <div class="wrap foot-base"><span>© <span id="year">2026</span> VSp!k</span><a href="#top">Back to top ↑</a></div>
+</footer>
+
+<a class="wa-float" data-wa="Hi VSp!k, I'd like to talk about a project." href="https://wa.me/919075018192" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg><use href="#i-chat"/></svg></a>
+
+{{scripts}}
+</body>
+</html>

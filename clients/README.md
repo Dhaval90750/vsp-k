@@ -4,6 +4,10 @@
 
 One folder per client project.
 
+## Before the first call
+
+Send the client [`_template/VSpik-Project-Requirements-Form.docx`](_template/VSpik-Project-Requirements-Form.docx): a 6-page Word form covering their business, goals, users, pages and features, e-commerce or app details, brand, technical setup, timeline, budget range and after-launch needs. Their answers become `01-brief.md`.
+
 ## Start a new client
 
 Copy [`_template/`](_template/) to `clients/<client-name>/` (lowercase, hyphens: `clients/sai-dental-nashik/`). Then fill in the files in order:
